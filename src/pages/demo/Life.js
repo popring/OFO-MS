@@ -1,6 +1,8 @@
 import React from 'react'
 
-import "./life.css"
+import {Button} from 'antd'
+
+import "./life.less"
 
 export default class Life extends React.Component {
 
@@ -26,6 +28,7 @@ export default class Life extends React.Component {
   render() {
     return (
       <div className="content">
+        <Button onClick={this.handleClick}> antd +1</Button>
         <button onClick={this.handleClick}>+1</button>
         <button onClick={this.handleBindClick.bind(this)}>+1</button>
         <p>当前状态数位：{this.state.count}</p>
