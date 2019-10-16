@@ -4,6 +4,7 @@ import Header from './components/Header';
 import NavLeft from './components/NavLeft';
 import Footer from './components/Footer';
 import { Col, Row } from 'antd';
+import Home from './pages/Home'
 
 import './style/common.less'
 
@@ -19,7 +20,7 @@ export default class Admin extends React.Component {
           <Col span={20} className="main">
             <Header className="header" />
             <Row className="content">
-              这是内容区域
+              <Home />
             </Row>
             <Footer className="footer" />
           </Col>

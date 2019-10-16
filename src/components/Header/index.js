@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 import utils from '../../utils/utils'
-import Axios from '../../axios'
+
 import './index.less'
 export default class Header extends React.Component {
 
@@ -23,10 +23,6 @@ export default class Header extends React.Component {
         date: utils.formate(date)
       })
     }, 1000)
-  }
-
-  getWeatherData() {
-
   }
 
   render() {
