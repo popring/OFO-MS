@@ -1,8 +1,12 @@
 import React from 'react';
 import { Menu } from 'antd';
+import { NavLink } from 'react-router-dom';
 import './index.less'
 import MenuConfig from '../../config/menuConfig.js'
+
 const { SubMenu } = Menu;
+
+
 export default class NavLeft extends React.Component {
 
   componentWillMount() {
@@ -23,7 +27,11 @@ export default class NavLeft extends React.Component {
           </SubMenu>
         )
       }
-      return (<Menu.Item key={item.key}>{item.title}</Menu.Item>);
+      return (<Menu.Item key={item.key}>
+        <NavLink to={"/admin"+item.key}>
+          {item.title}
+        </NavLink>
+      </Menu.Item>);
     });
   }
 
@@ -35,7 +43,7 @@ export default class NavLeft extends React.Component {
           <h1>Imooc MS</h1>
         </div>
         <Menu theme="dark">
-          { this.state.menuTreeNode }
+          {this.state.menuTreeNode}
         </Menu>
       </div>
     );
