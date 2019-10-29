@@ -11,6 +11,7 @@ import Loadings from './pages/ui/loadings';
 import Notifications from './pages/ui/notifications';
 import Messages from './pages/ui/messages';
 import Tabs from './pages/ui/tabs';
+import Gallerys from './pages/ui/gallerys';
 
 import NoMatch from './pages/nomatch';
 
@@ -34,6 +35,7 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/ui/notification" component={Notifications}></Route>
                   <Route path="/admin/ui/messages" component={Messages}></Route>
                   <Route path="/admin/ui/tabs" component={Tabs}></Route>
+                  <Route path="/admin/ui/gallery" component={Gallerys}></Route>
                   <Route component={NoMatch}></Route>
                 </Switch>
               </Admin>
