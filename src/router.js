@@ -2,6 +2,7 @@ import React from 'react';
 import App from './App';
 import { Route, Switch, HashRouter, Redirect } from 'react-router-dom';
 
+// ui 页面
 import Login from './pages/Login';
 import Admin from './admin';
 import Home from './pages/Home'
@@ -12,7 +13,16 @@ import Notifications from './pages/ui/notifications';
 import Messages from './pages/ui/messages';
 import Tabs from './pages/ui/tabs';
 import Gallerys from './pages/ui/gallerys';
+import Carousels from './pages/ui/carousels';
 
+// form 页面
+import FormLogin from './pages/form/FormLogin';
+import FormRegister from './pages/form/FormRegister';
+
+// table
+import BasicTable from './pages/table/basicTable'
+
+// 匹配路由错误
 import NoMatch from './pages/nomatch';
 
 
@@ -21,7 +31,6 @@ export default class IRouter extends React.Component {
     return (
       <HashRouter>
         <App>
-          {/* <Redirect exact from="/" to="/admin/home"></Redirect> */}
           <Switch>
             <Route path="/login" component={Login}></Route>
             <Route path="/admin" render={() =>
@@ -36,6 +45,10 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/ui/messages" component={Messages}></Route>
                   <Route path="/admin/ui/tabs" component={Tabs}></Route>
                   <Route path="/admin/ui/gallery" component={Gallerys}></Route>
+                  <Route path="/admin/ui/carousel" component={Carousels}></Route>
+                  <Route path="/admin/form/login" component={FormLogin}></Route>
+                  <Route path="/admin/form/reg" component={FormRegister}></Route>
+                  <Route path="/admin/table/basic" component={BasicTable}></Route>
                   <Route component={NoMatch}></Route>
                 </Switch>
               </Admin>
