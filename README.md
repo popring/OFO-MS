@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 继个人学习项目，请多指教。
 
+## TODO
+1. 权限配置，使用mock配置返回
 ## Using
 
 [create-react-app](https://www.npmjs.com/package/create-react-app)
@@ -38,6 +40,8 @@ npm i
 npm run start
 ```
 
+访问地址：[http://localhost:3000/#/admin/home](http://localhost:3000/#/admin/home)
+
 ### Structure
 
 ```bash
@@ -66,3 +70,8 @@ npm run start
     ├─style					# 相关公共样式和初始化配置样式
     └─utils					# create-react-app 默认生成
 ```
+
+
+## 更新日志
+2019年11月4日10:44:02
+将主面板的时间显示切换为使用moment实现

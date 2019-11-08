@@ -2,20 +2,20 @@ const menuList = [
   {
       title: '首页',
       key: '/home'
-  },
-  {
-      title: 'UI',
-      key: '/ui',
-      children: [
-          {
-              title: '按钮',
-              key: '/ui/buttons',
           },
           {
-              title: '弹框',
-              key: '/ui/modals',
-          },
-          {
+              title: 'UI',
+              key: '/ui',
+              children: [
+                  {
+                      title: '按钮',
+                      key: '/ui/buttons',
+                  },
+                  {
+                      title: '弹框',
+                      key: '/ui/modals',
+                  },
+                  {
               title: 'Loading',
               key: '/ui/loadings',
           },

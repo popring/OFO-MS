@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Table } from 'antd';
+import { Card, Table, Button } from 'antd';
 
 export default class basicTable extends React.Component {
 
@@ -8,13 +8,16 @@ export default class basicTable extends React.Component {
   }
 
   componentWillMount() {
+    this.getDataSource();
+  }
+
+  getDataSource = () => {
     this.axios.get('/api/table/basictable')
       .then((res) => {
         this.setState({
           dataSource: res.data
         })
-      })
-
+      });
   }
 
   render() {
@@ -33,6 +36,7 @@ export default class basicTable extends React.Component {
     return (
       <div>
         <Card title="普通表格">
+          <Button type="primary" style={{ margin: '10px 0' }} onClick={this.getDataSource}>refresh</Button>
           <Table
             dataSource={dataSource}
             columns={columns}

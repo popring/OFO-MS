@@ -1,12 +1,31 @@
 import React from 'react';
+import moment from 'moment';
 
 import './index.less'
 export default class Footer extends React.Component {
 
+  state = {
+    start: '2019-10-15 15:20:02',
+    diffTime: null
+  }
+
+  componentWillMount() {
+    this.fromNow();
+  }
+
+  fromNow = () => {
+    const start = moment(this.state.start);
+    const now = moment();
+    const diffTime = now.diff(start,'minute');
+    this.setState({
+      diffTime
+    })
+  }
+
   render() {
     return (
       <div className="footer">
-        版权所有：慕课网&河畔一脚（推荐使用谷歌浏览器，可以获得更加操作页面体验），技术支持：河畔一脚
+        版权所有：慕课网&河畔一脚，距离本项目开启已经过了{this.state.diffTime}分钟，继续加油。
       </div>
     );
   }

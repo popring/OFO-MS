@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import utils from '../../utils/utils'
+import moment from 'moment';
 
 import './index.less'
 export default class Header extends React.Component {
@@ -9,18 +9,16 @@ export default class Header extends React.Component {
     super(props);
 
     this.state = {
-      date: '2019年10月15日 15:20:02',
+      date: '2019-10-15 15:20:02',
       weather: '多云转晴',
       username: '河畔一脚'
     };
   }
 
   componentWillMount() {
-    let date;
     setInterval(() => {
-      date = new Date();
       this.setState({
-        date: utils.formate(date)
+        date: moment().format('YYYY-MM-DD HH:mm:ss')
       })
     }, 1000)
   }

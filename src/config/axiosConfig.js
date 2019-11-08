@@ -1,5 +1,7 @@
 import axios from 'axios';
+import { Modal } from 'antd';
 
+// let olineURL = '';
 axios.defaults.baseURL = 'http://localhost:5000';
 
 
@@ -15,8 +17,14 @@ axios.interceptors.request.use(function (config) {
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
   // 对响应数据做点什么
+  if (response.data.code !== 200) {
+    Modal.error({
+      title: '请求错误',
+      content: `错误${response.data.code}, ${response.data.msg}`
+    });
+  }
+  console.log(response)
   response = response.data;
-  response.status = 200;
   return response;
 }, function (error) {
   // 对响应错误做点什么
