@@ -48,19 +48,19 @@ npm run start
 │ .gitignore
 │ package.json
 │ yarn.lock				
-│ README.md					# README
-├─config						# 项目整体相关配置文件
-├─public						# 公共资源文件
+│ README.md				# README
+├─config				# 项目整体相关配置文件
+├─public				# 公共资源文件
 │  ├─assets
 │  └─gallery
-├─scripts						# 脚本文件
-└─src								# 源码
-    ├─axios					# axios请求拦截(mock.js)
+├─scripts				# 脚本文件
+└─src					# 源码
+    ├─axios				# axios请求拦截(mock.js)
     ├─components		# 公共组件部分
-    ├─config				# axios请求配置，权限配置
-    ├─pages					# 各个页面的组件
-    │  ├─demo				# demo菜单内的各个页面
-    │  ├─form				# ...
+    ├─config			# axios请求配置，权限配置
+    ├─pages				# 各个页面的组件
+    │  ├─demo			# demo菜单内的各个页面
+    │  ├─form			# ...
     │  ├─Home
     │  ├─Login
     │  ├─nomatch
