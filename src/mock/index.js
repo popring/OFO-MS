@@ -1,17 +1,17 @@
 import Mock from 'mockjs';
 
 
-let navtiveURL = 'http://localhost:5000';
+let navtiveURL = 'http://localhost:5000/api';
 
-Mock.mock(`${navtiveURL}/api/table/basictable`, 'get', {
+Mock.mock(`${navtiveURL}/table/basictable`, 'get', {
   code: 200,
   msg: '找不到数据',
   "data|5-30": [
     {
       "id|+1": 1,
       "userName": "@cname",
-      "age|16-29": 1,
-      "gender": ()=>['男', '女'][Number.parseInt(Math.random()*2)],
+      "age|16-50": 1,
+      "gender|1-2": 1,
       "birthday": '@date',
       "address": "@county(true)",
       "time": "@time"

@@ -23,7 +23,6 @@ axios.interceptors.response.use(function (response) {
       content: `错误${response.data.code}, ${response.data.msg}`
     });
   }
-  console.log(response)
   response = response.data;
   return response;
 }, function (error) {

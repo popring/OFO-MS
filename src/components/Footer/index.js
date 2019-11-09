@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
   fromNow = () => {
     const start = moment(this.state.start);
     const now = moment();
-    const diffTime = now.diff(start,'minute');
+    const diffTime = now.diff(start,'hours');
     this.setState({
       diffTime
     })
@@ -25,7 +25,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        版权所有：慕课网&河畔一脚，距离本项目开启已经过了{this.state.diffTime}分钟，继续加油。
+        版权所有：慕课网&河畔一脚，距离本项目开启已经过了{this.state.diffTime}小时，继续加油。
       </div>
     );
   }
