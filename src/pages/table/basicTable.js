@@ -16,7 +16,7 @@ export default class basicTable extends React.Component {
     this.setState({
       isLoading: true
     })
-    this.axios.get('/api/table/basictable')
+    this.axios.get('/table/basictable')
       .then((res) => {
         setTimeout(() => {
           this.setState({
@@ -46,8 +46,13 @@ export default class basicTable extends React.Component {
       onOk: () => {
         let dataSource = this.state.dataSource;
         dataSource = dataSource.filter(v1 => {
-          return !selectedRowKeys.some(v2=> {
-            return v1.id === v2
+          return !selectedRowKeys.some((v2,index) => {
+            if (v1.id === v2) {
+              selectedRowKeys.splice(index,1);
+              console.log(selectedRowKeys);
+              return true
+            }
+            return false
           })
         })
         this.setState({

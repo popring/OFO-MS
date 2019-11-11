@@ -1,9 +1,16 @@
 export default {
-  
-  formate(date) {
-    if(!date) {
-      return '';
+  pagination(data, callback = () => { }) {
+    return {
+      onChange: (current, pageSize) => {
+        callback(current,pageSize);
+      },
+      current: data.result.page,
+      pageSize: data.result.page_size,
+      total: data.result.total_count,
+      showSizeChanger: true,
+      showTotal: () => {
+        return `共 ${data.result.total_count} 条数据`
+      }
     }
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   }
 }

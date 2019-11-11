@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## TODO
 1. 权限配置，使用mock配置返回
+2. 线上 `easy-mock`间歇性的歇菜，转战本地部署 `easy-mock`
 ## Using
 
 [create-react-app](https://www.npmjs.com/package/create-react-app)
@@ -75,3 +76,15 @@ npm run start
 ## 更新日志
 2019年11月4日10:44:02
 将主面板的时间显示切换为使用moment实现
+
+
+
+2019年11月11日11:52:44
+
+1. 修改调试接口为 4000
+2.  `/admin/city`开通城市的筛选条件，传递给后端，点击切换页数，网页中的UI组件分页按钮没有切换的原因是，使用mock的数据返回的参数`page`一直为`1`，而UI组件根据返回的page切换分页按钮，也是为1，这就是分页按钮没有切换的原因。
+3. 网站底部版权添加，项目启动时间计时
+4. 添加城市管理页面
+
+
+

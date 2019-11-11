@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { Modal } from 'antd';
 
-// let olineURL = '';
-axios.defaults.baseURL = 'http://localhost:5000';
+let URL = {
+  olineURL: 'https://www.easy-mock.com/mock/5dc62b0a2b69d9223b633bce/api',
+  mockURL: 'http://localhost:5000/api'
+}
+axios.defaults.baseURL = URL.olineURL;
 
 
 // 添加请求拦截器
@@ -27,6 +30,11 @@ axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   // 对响应错误做点什么
+  Modal.destroyAll();
+  Modal.error({
+    title: '请求错误',
+    content: `当前网络似乎有点问题，请检查后重试一下吧！`
+  });
   return Promise.reject(error);
 });
 

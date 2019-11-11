@@ -20,8 +20,11 @@ import FormLogin from './pages/form/FormLogin';
 import FormRegister from './pages/form/FormRegister';
 
 // table
-import BasicTable from './pages/table/basicTable'
-import HeightTable from './pages/table/heightTable'
+import BasicTable from './pages/table/basicTable';
+import HeightTable from './pages/table/heightTable';
+
+// city
+import City from './pages/city';
 
 // 匹配路由错误
 import NoMatch from './pages/nomatch';
@@ -51,6 +54,7 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/form/reg" component={FormRegister}></Route>
                   <Route path="/admin/table/basic" component={BasicTable}></Route>
                   <Route path="/admin/table/high" component={HeightTable}></Route>
+                  <Route path="/admin/city" component={City}></Route>
                   <Route component={NoMatch}></Route>
                 </Switch>
               </Admin>
