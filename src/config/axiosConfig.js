@@ -5,7 +5,7 @@ let URL = {
   olineURL: 'https://www.easy-mock.com/mock/5dc62b0a2b69d9223b633bce/api',
   mockURL: 'http://localhost:5000/api'
 }
-axios.defaults.baseURL = URL.olineURL;
+axios.defaults.baseURL = URL.mockURL;
 
 
 // 添加请求拦截器

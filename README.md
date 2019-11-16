@@ -7,6 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## TODO
 1. 权限配置，使用mock配置返回
 2. 线上 `easy-mock`间歇性的歇菜，转战本地部署 `easy-mock`
+3. 添加新功能，将订单数据以表格的形式导出。 js-xlsx
 ## Using
 
 [create-react-app](https://www.npmjs.com/package/create-react-app)
@@ -88,3 +89,8 @@ npm run start
 
 
 
+2019年11月16日16:56:11
+
+1. 后端接口改用 koa创建生成mock数据。
+
+2. 添加订单管理页面

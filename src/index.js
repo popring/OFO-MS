@@ -6,7 +6,8 @@ import './index.css';
 // import Admin from './admin';
 
 // mock拦截
-import './mock';
+// import './mock';
+
 // 引入自定义配置 axios
 import axios from './config/axiosConfig';
 // 前端路由

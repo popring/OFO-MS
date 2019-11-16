@@ -19,7 +19,7 @@ Mock.mock(`${navtiveURL}/table/basictable`, 'get', {
   ]
 })
 
-Mock.mock(`${navtiveURL}/open_city`, 'get', {
+Mock.mock(RegExp(`${navtiveURL}/open_city?.*`), 'get', {
   "code": 200,
   "result": {
     "page": 1,

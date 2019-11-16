@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table, Card } from 'antd';
-import FilterModule from './filterModule'
+import { Table, Card, Button } from 'antd';
+import FilterModule from './filterModule';
+import OpenCity from './openCity';
 import Utils from '../../utils/utils';
 
 
@@ -25,6 +26,9 @@ export default class city extends React.Component {
       params.page = 1;
     }
     Object.assign(this.params, params);
+    this.setState({
+      isLoading: true
+    })
     this.axios.get('/open_city', {
       params: this.params
     })
@@ -34,9 +38,18 @@ export default class city extends React.Component {
           pagination: Utils.pagination(res, (current) => {
             this.params.page = current;
             this.getData(this.params);
-          })
+          }),
+          isLoading: false
         })
       })
+  }
+
+  handleShowOpen = () => {
+    this.child.handleShowOpen();
+  }
+
+  onRef = (ref) => {
+    this.child = ref;
   }
 
   render() {
@@ -58,19 +71,21 @@ export default class city extends React.Component {
       { title: '操作时间', dataIndex: 'update_time', key: 'update_time' },
       { title: '操作人', dataIndex: 'sys_user_name', key: 'sys_user_name' }
     ];
-
     return (
       <div>
         <Card>
           <FilterModule getData={(fliterValue) => { this.getData(fliterValue) }} />
+          <Button type="primary" onClick={this.handleShowOpen} style={{marginBottom: 20}}>开通城市</Button>
           <Table
             rowKey='id'
             columns={columns}
             bordered
             dataSource={dataSource}
             pagination={this.state.pagination}
+            loading={this.state.isLoading}
           />
         </Card>
+        <OpenCity onRef={this.onRef} />
       </div >
     )
   }
