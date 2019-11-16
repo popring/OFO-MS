@@ -4,9 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 继个人学习项目，请多指教。
 
+## Projects
+
+前端网页的链接： https://github.com/popring/ImoocManager 
+
+后端接口的链接： https://github.com/popring/imoocManagerAPI 
+
 ## TODO
 1. 权限配置，使用mock配置返回
-2. 线上 `easy-mock`间歇性的歇菜，转战本地部署 `easy-mock`
 3. 添加新功能，将订单数据以表格的形式导出。 js-xlsx
 ## Using
 
@@ -44,6 +49,8 @@ npm run start
 
 访问地址：[http://localhost:3000/#/admin/home](http://localhost:3000/#/admin/home)
 
+后台接口：http://127.0.0.1:5000/api
+
 ### Structure
 
 ```bash
@@ -74,7 +81,7 @@ npm run start
 ```
 
 
-## 更新日志
+##  Update Log 
 2019年11月4日10:44:02
 将主面板的时间显示切换为使用moment实现
 
