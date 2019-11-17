@@ -5,6 +5,7 @@ import { Route, Switch, HashRouter, Redirect } from 'react-router-dom';
 // ui 页面
 import Login from './pages/Login';
 import Admin from './admin';
+import Common from './common';
 import Home from './pages/Home'
 import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
@@ -28,6 +29,7 @@ import City from './pages/city';
 
 // order
 import Order from './pages/order';
+import OrderDetail from './pages/order/detail';
 
 // 匹配路由错误
 import NoMatch from './pages/nomatch';
@@ -63,7 +65,12 @@ export default class IRouter extends React.Component {
                 </Switch>
               </Admin>
             }></Route>
-            <Route path="/order/detail"></Route>
+            <Route path="/common" render={() =>
+              <Common>
+                <Route path="/common/order/detail/:orderId" component={OrderDetail} />
+              </Common>
+            }
+            />
           </Switch>
         </App>
       </HashRouter>

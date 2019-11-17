@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Form, Select, DatePicker, Button, Table } from 'antd';
+import { Card, Form, Select, DatePicker, Button, Table, Modal } from 'antd';
 import moment from 'moment';
 import Utils from '../../utils/utils';
 
@@ -25,11 +25,9 @@ class order extends React.Component {
 
   requestData = (params = {}) => {
     const filterVals = this.props.form.getFieldsValue();
-    // console.log(filterVals);
     this.params = { ...this.params, ...filterVals };
-    console.log(this.params)
     this.axios.get('/order/list', {
-      params: {...this.params}
+      params: this.params
     })
       .then(res => {
         this.setState({
@@ -47,6 +45,18 @@ class order extends React.Component {
       selectedRowKeys: [record.id],
       selectedItem: record
     })
+  }
+
+  openDetail = ()=> {
+    const item = this.state.selectedItem
+    // console.log(item)
+    if(!item) {
+      return Modal.info({
+        title: '提示',
+        content: '请先选择一条数据'
+      });
+    }
+    window.open(`/#/common/order/detail/${item.id}`, '_blank');
   }
 
   render() {
@@ -153,7 +163,7 @@ class order extends React.Component {
           </Form>
         </Card>
         <Card>
-          <Button type="primary" style={{ marginBottom: 10 }}>订单详情</Button>
+          <Button type="primary" style={{ marginBottom: 10 }} onClick={this.openDetail}>订单详情</Button>
           <Button type="primary" style={{ marginBottom: 10 }}>结束订单</Button>
           <Table
             dataSource={data}
@@ -171,7 +181,7 @@ class order extends React.Component {
             }}
           />
         </Card>
-      </div>
+      </div >
     );
   }
 }

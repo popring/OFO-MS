@@ -1,4 +1,4 @@
-@import './default.less';
+@import "./default.less";
 
 .container {
   display: flex;
@@ -19,5 +19,14 @@
   .content {
     position: relative;
     padding: 20px;
+  }
+}
+
+.clearfix {
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+    visibility: hidden;
   }
 }
