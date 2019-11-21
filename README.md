@@ -25,6 +25,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [moment](https://momentjs.com/)
 
+[百度地图api](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html)
+
 ## Installation
 
 ```bash
@@ -82,29 +84,17 @@ npm run start
 
 
 ##  Update Log 
-2019年11月4日10:44:02
-将主面板的时间显示切换为使用moment实现
-
-
-
-2019年11月11日11:52:44
-
-1. 修改调试接口为 4000
-2.  `/admin/city`开通城市的筛选条件，传递给后端，点击切换页数，网页中的UI组件分页按钮没有切换的原因是，使用mock的数据返回的参数`page`一直为`1`，而UI组件根据返回的page切换分页按钮，也是为1，这就是分页按钮没有切换的原因。
-3. 网站底部版权添加，项目启动时间计时
-4. 添加城市管理页面
-
-
-
 2019年11月16日16:56:11
 
 1. 后端接口改用 koa创建生成mock数据。
 
-2. 添加订单管理页面
+2. `/admin/city`开通城市的筛选条件，传递给后端，点击切换页数，网页中的UI组件分页按钮没有切换的原因是，使用mock的数据返回的参数`page`一直为`1`，而UI组件根据返回的page切换分页按钮，也是为1，这就是分页按钮没有切换的原因。
 
+2019年11月21日21:54:48
 
-2019年11月17日16:38:08
+1. 项目工程化
 
-1. 订单详情页面。
+2. 抽离表格筛选条件组件为公共组件
 
-2. 添加百度地图，设置地图标注，设置区域。
+TODO
+1. 将表格封装，表格数据请求封装

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Table, Card, Button } from 'antd';
-import FilterModule from './filterModule';
 import OpenCity from './openCity';
 import Utils from '../../utils/utils';
-
+import BaseForm from '../../components/BaseForm';
 
 export default class city extends React.Component {
 
@@ -11,6 +10,45 @@ export default class city extends React.Component {
     dataSource: null,
     pagination: {}
   }
+
+  formList = [
+    {
+      type: 'SELECT',
+      label: '城市',
+      field: 'city_id',
+      placeholder: '全部',
+      initialValue: '0',
+      style: { width: 120 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '天津' }, { id: '3', name: '上海' }]
+    },
+    {
+      type: 'SELECT',
+      label: '用车模式',
+      field: 'mode',
+      placeholder: '全部',
+      initialValue: '1',
+      style: { width: 150 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '指定停车点模式' }, { id: '2', name: '禁停区模式' }]
+    },
+    {
+      type: 'SELECT',
+      label: '营运模式',
+      field: 'op_mode',
+      placeholder: '全部',
+      initialValue: '1',
+      style: { width: 120 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '自营' }, { id: '2', name: '加盟' }]
+    },
+    {
+      type: 'SELECT',
+      label: '加盟商授权状态',
+      field: 'franchisee_name',
+      placeholder: '全部',
+      initialValue: '0',
+      style: { width: 120 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '已授权' }, { id: '2', name: '未授权' }]
+    },
+  ]
 
   params = {
     // 当前页数，默认为第一页
@@ -74,8 +112,8 @@ export default class city extends React.Component {
     return (
       <div>
         <Card>
-          <FilterModule getData={(fliterValue) => { this.getData(fliterValue) }} />
-          <Button type="primary" onClick={this.handleShowOpen} style={{marginBottom: 20}}>开通城市</Button>
+          <BaseForm formList={this.formList} handleFilterSubmit={(fliterValue) => { this.getData(fliterValue) }} />
+          <Button type="primary" onClick={this.handleShowOpen} style={{ marginBottom: 20 }}>开通城市</Button>
           <Table
             rowKey='id'
             columns={columns}

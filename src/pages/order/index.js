@@ -1,11 +1,8 @@
 import React from 'react';
-import { Card, Form, Select, DatePicker, Button, Table, Modal } from 'antd';
-import moment from 'moment';
+import { Card, Form, Button, Table, Modal } from 'antd';
 import Utils from '../../utils/utils';
+import BaseForm from '../../components/BaseForm';
 
-const FormItem = Form.Item;
-const Option = Select.Option;
-const { RangePicker } = DatePicker;
 class order extends React.Component {
 
   state = {
@@ -19,13 +16,35 @@ class order extends React.Component {
     page: 1
   }
 
+  formList = [
+    {
+      type: 'SELECT',
+      label: '城市',
+      field: 'city_id',
+      initialValue: '0',
+      placeholder: '',
+      style: { width: 150 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '北京市' }, { id: '2', name: '上海市' }, { id: '3', name: '广州市' }]
+    },
+    {
+      type: 'RANGEDATE'
+    },
+    {
+      type: 'SELECT',
+      label: '状态',
+      field: 'state',
+      initialValue: '0',
+      placeholder: '',
+      style: { width: 150 },
+      list: [{ id: '0', name: '全部' }, { id: '1', name: '进行中' }, { id: '2', name: '进行中（临时锁车）' }, { id: '3', name: '行程结束' }]
+    }
+  ]
   componentDidMount() {
     this.requestData(this.params);
   }
 
   requestData = (params = {}) => {
-    const filterVals = this.props.form.getFieldsValue();
-    this.params = { ...this.params, ...filterVals };
+    this.params = { ...this.params, ...params };
     this.axios.get('/order/list', {
       params: this.params
     })
@@ -47,10 +66,10 @@ class order extends React.Component {
     })
   }
 
-  openDetail = ()=> {
+  openDetail = () => {
     const item = this.state.selectedItem
     // console.log(item)
-    if(!item) {
+    if (!item) {
       return Modal.info({
         title: '提示',
         content: '请先选择一条数据'
@@ -60,7 +79,6 @@ class order extends React.Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     const columns = [
       {
         title: '订单编号',
@@ -119,48 +137,7 @@ class order extends React.Component {
     return (
       <div>
         <Card>
-          <Form layout='inline'>
-            <FormItem label="城市">
-              {
-                getFieldDecorator('city_id', {
-                  initialValue: '0'
-                })(
-                  <Select style={{ width: 150 }}>
-                    <Option value="0">全部</Option>
-                    <Option value="1">北京市</Option>
-                    <Option value="2">上海市</Option>
-                    <Option value="3">广州市</Option>
-                    <Option value="4">深圳市</Option>
-                  </Select>
-                )
-              }
-            </FormItem>
-            <FormItem label="查询时间区间">
-              {
-                getFieldDecorator('rangeDate', {
-                  initialValue: [moment().subtract(1, 'M'), moment()]
-                })(
-                  <RangePicker
-                    placeholder={['开始时间', '结束时间']}
-                  />
-                )
-              }
-            </FormItem>
-            <FormItem>
-              {
-                getFieldDecorator('state', {
-                  initialValue: '0'
-                })(
-                  <Select style={{ width: 150 }}>
-                    <Option value="0">全部</Option>
-                    <Option value="1">进行中</Option>
-                    <Option value="2">进行中（临时锁车）</Option>
-                    <Option value="3">行程结束</Option>
-                  </Select>
-                )
-              }
-            </FormItem>
-          </Form>
+          <BaseForm formList={this.formList} handleFilterSubmit={(filterVals) => { this.requestData(filterVals) }} />
         </Card>
         <Card>
           <Button type="primary" style={{ marginBottom: 10 }} onClick={this.openDetail}>订单详情</Button>
