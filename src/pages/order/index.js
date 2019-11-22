@@ -45,9 +45,7 @@ class order extends React.Component {
 
   requestData = (params = {}) => {
     this.params = { ...this.params, ...params };
-    this.axios.get('/order/list', {
-      params: this.params
-    })
+    this.$api.orderList(this.params)
       .then(res => {
         this.setState({
           data: res.result.item_list,
@@ -109,7 +107,25 @@ class order extends React.Component {
       },
       {
         title: '状态',
-        dataIndex: 'status'
+        dataIndex: 'status',
+        render(text, record, index) {
+          let status = null;
+          switch (text) {
+            case 1:
+              status = '进行中';
+              break;
+            case 2:
+              status = '进行中（临时锁车）';
+              break;
+            case 3:
+              status = '行程结束';
+              break;
+            default:
+              break;
+          }
+          return status;
+        },
+        width: 180
       },
       {
         title: '开始时间',

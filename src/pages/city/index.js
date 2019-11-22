@@ -66,10 +66,8 @@ export default class city extends React.Component {
     Object.assign(this.params, params);
     this.setState({
       isLoading: true
-    })
-    this.axios.get('/open_city', {
-      params: this.params
-    })
+    });
+    this.$api.openCity(this.params)
       .then(res => {
         this.setState({
           dataSource: res.result.item_list,

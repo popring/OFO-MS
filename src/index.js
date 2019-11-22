@@ -8,14 +8,13 @@ import './index.css';
 // mock拦截
 // import './mock';
 
-// 引入自定义配置 axios
-import axios from './config/axiosConfig';
 // 前端路由
 import IRouter from './router';
 import * as serviceWorker from './serviceWorker';
 
-// axios绑定到React
-React.Component.prototype.axios = axios;
+// 接口请求绑定到React.Component
+import api from './api';
+React.Component.prototype.$api = api;
 
 ReactDOM.render(<IRouter />, document.getElementById('root'));
 

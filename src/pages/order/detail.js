@@ -14,16 +14,13 @@ class detail extends React.Component {
   }
 
   getDetailInfo = (orderId) => {
-    this.axios.get('/order/detail', {
-      params: {
-        order_id: orderId
-      }
-    }).then(res => {
-      this.setState({
-        orderInfo: res.result
+    this.$api.orderDetail({ order_id: orderId })
+      .then(res => {
+        this.setState({
+          orderInfo: res.result
+        });
+        this.renderMap(res.result);
       });
-      this.renderMap(res.result);
-    });
   }
 
   renderMap = (data) => {

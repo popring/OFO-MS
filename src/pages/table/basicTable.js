@@ -16,7 +16,7 @@ export default class basicTable extends React.Component {
     this.setState({
       isLoading: true
     })
-    this.axios.get('/table/basictable')
+    this.$api.tableBasic()
       .then((res) => {
         setTimeout(() => {
           this.setState({
