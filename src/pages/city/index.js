@@ -1,15 +1,12 @@
 import React from 'react';
-import { Table, Card, Button } from 'antd';
+import { Card, Button } from 'antd';
 import OpenCity from './openCity';
-import Utils from '../../utils/utils';
+import Table from '../../components/Table';
 import BaseForm from '../../components/BaseForm';
 
 export default class city extends React.Component {
 
-  state = {
-    dataSource: null,
-    pagination: {}
-  }
+  state = {}
 
   formList = [
     {
@@ -26,7 +23,7 @@ export default class city extends React.Component {
       label: '用车模式',
       field: 'mode',
       placeholder: '全部',
-      initialValue: '1',
+      initialValue: '0',
       style: { width: 150 },
       list: [{ id: '0', name: '全部' }, { id: '1', name: '指定停车点模式' }, { id: '2', name: '禁停区模式' }]
     },
@@ -35,7 +32,7 @@ export default class city extends React.Component {
       label: '营运模式',
       field: 'op_mode',
       placeholder: '全部',
-      initialValue: '1',
+      initialValue: '0',
       style: { width: 120 },
       list: [{ id: '0', name: '全部' }, { id: '1', name: '自营' }, { id: '2', name: '加盟' }]
     },
@@ -50,54 +47,56 @@ export default class city extends React.Component {
     },
   ]
 
-  params = {
-    // 当前页数，默认为第一页
-    page: 1
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  getData = (params = {}) => {
-    if (!params.hasOwnProperty('page')) {
-      params.page = 1;
-    }
-    Object.assign(this.params, params);
-    this.setState({
-      isLoading: true
-    });
-    this.$api.openCity(this.params)
-      .then(res => {
-        this.setState({
-          dataSource: res.result.item_list,
-          pagination: Utils.pagination(res, (current) => {
-            this.params.page = current;
-            this.getData(this.params);
-          }),
-          isLoading: false
-        })
-      })
-  }
+  // 存放子组件ref
+  child = {}
 
   handleShowOpen = () => {
-    this.child.handleShowOpen();
+    this.child.form.handleShowOpen();
   }
 
-  onRef = (ref) => {
-    this.child = ref;
+  onFormRef = (ref) => {
+    this.child.form = ref;
+  }
+
+  onTableRef = (ref) => {
+    this.child.table = ref;
+  }
+
+  getList = (fliterValue) => {
+    this.child.table.getList(fliterValue)
   }
 
   render() {
-    const dataSource = this.state.dataSource;
     const columns = [
       { title: '城市ID', dataIndex: 'id', key: 'id' },
       { title: '城市名称', dataIndex: 'name', key: 'name' },
-      { title: '用车模式', dataIndex: 'mode', key: 'mode' },
-      { title: '营运模式', dataIndex: 'op_mode', key: 'op_mode' },
+      {
+        title: '用车模式', dataIndex: 'mode', key: 'mode', render(mode) {
+          switch (mode) {
+            case 1:
+              return '指定停车点模式';
+            case 2:
+              return '禁停区模式';
+            default:
+              break;
+          }
+        }
+      },
+      {
+        title: '营运模式', dataIndex: 'op_mode', key: 'op_mode', render(op_mode) {
+          switch (op_mode) {
+            case 1:
+              return '自营';
+            case 2:
+              return '加盟';
+            default:
+              break;
+          }
+        }
+      },
       { title: '授权加盟商', dataIndex: 'franchisee_name', key: 'franchisee_name' },
       {
-        title: '城市管理员', dataIndex: 'city_admins', key: 'city_admins', render: (text, row, index) => {
+        title: '城市管理员', dataIndex: 'city_admins', key: 'city_admins', render: (text) => {
           return text.map(item => {
             return item.user_name;
           }).join(',');
@@ -110,18 +109,17 @@ export default class city extends React.Component {
     return (
       <div>
         <Card>
-          <BaseForm formList={this.formList} handleFilterSubmit={(fliterValue) => { this.getData(fliterValue) }} />
+          <BaseForm formList={this.formList} handleFilterSubmit={(fliterValue) => { this.getList(fliterValue) }} />
           <Button type="primary" onClick={this.handleShowOpen} style={{ marginBottom: 20 }}>开通城市</Button>
           <Table
             rowKey='id'
             columns={columns}
-            bordered
-            dataSource={dataSource}
-            pagination={this.state.pagination}
-            loading={this.state.isLoading}
+            apiGetList={this.$api.openCity}
+            onRef={this.onTableRef}
+            onTest='test'
           />
         </Card>
-        <OpenCity onRef={this.onRef} />
+        <OpenCity onRef={this.onFormRef} />
       </div >
     )
   }
