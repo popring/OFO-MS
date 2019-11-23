@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Form, Button, Table, Modal } from 'antd';
-import Utils from '../../utils/utils';
-import BaseForm from '../../components/BaseForm';
+import { Card, Form, Button, Modal } from 'antd';
+import Table from '@/components/Table';
+import BaseForm from '@/components/BaseForm';
 
 class order extends React.Component {
 
@@ -10,10 +10,6 @@ class order extends React.Component {
     pagination: {},
     selectedRowKeys: null,
     selectedItem: null
-  }
-
-  params = {
-    page: 1
   }
 
   formList = [
@@ -39,23 +35,6 @@ class order extends React.Component {
       list: [{ id: '0', name: '全部' }, { id: '1', name: '进行中' }, { id: '2', name: '进行中（临时锁车）' }, { id: '3', name: '行程结束' }]
     }
   ]
-  componentDidMount() {
-    this.requestData(this.params);
-  }
-
-  requestData = (params = {}) => {
-    this.params = { ...this.params, ...params };
-    this.$api.orderList(this.params)
-      .then(res => {
-        this.setState({
-          data: res.result.item_list,
-          pagination: Utils.pagination(res, current => {
-            this.params.page = current;
-            this.requestData(this.params);
-          })
-        })
-      })
-  }
 
   onRowClick = (record) => {
     this.setState({
@@ -65,8 +44,7 @@ class order extends React.Component {
   }
 
   openDetail = () => {
-    const item = this.state.selectedItem
-    // console.log(item)
+    const item = this.state.selectedItem;
     if (!item) {
       return Modal.info({
         title: '提示',
@@ -74,6 +52,14 @@ class order extends React.Component {
       });
     }
     window.open(`/#/common/order/detail/${item.id}`, '_blank');
+  }
+
+  onTableRef = (ref) => {
+    this.child = ref;
+  }
+
+  getList = (fliterValue) => {
+    this.child.getList(fliterValue)
   }
 
   render() {
@@ -144,7 +130,6 @@ class order extends React.Component {
         dataIndex: 'user_pay'
       }
     ];
-    const data = this.state.data;
     const selectedRowKeys = this.state.selectedRowKeys;
     const rowSelection = {
       type: 'radio',
@@ -153,17 +138,16 @@ class order extends React.Component {
     return (
       <div>
         <Card>
-          <BaseForm formList={this.formList} handleFilterSubmit={(filterVals) => { this.requestData(filterVals) }} />
+          <BaseForm formList={this.formList} handleFilterSubmit={(filterVals) => { this.getList(filterVals) }} />
         </Card>
         <Card>
           <Button type="primary" style={{ marginBottom: 10 }} onClick={this.openDetail}>订单详情</Button>
           <Button type="primary" style={{ marginBottom: 10 }}>结束订单</Button>
           <Table
-            dataSource={data}
+            onRef={this.onTableRef}
+            apiGetList={this.$api.orderList}
             columns={columns}
-            bordered
             rowKey="id"
-            pagination={this.state.pagination}
             rowSelection={rowSelection}
             onRow={(record, index) => {
               return {

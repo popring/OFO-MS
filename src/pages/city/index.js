@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Button } from 'antd';
 import OpenCity from './openCity';
-import Table from '../../components/Table';
-import BaseForm from '../../components/BaseForm';
+import Table from '@/components/Table';
+import BaseForm from '@/components/BaseForm';
 
 export default class city extends React.Component {
 
@@ -110,6 +110,8 @@ export default class city extends React.Component {
       <div>
         <Card>
           <BaseForm formList={this.formList} handleFilterSubmit={(fliterValue) => { this.getList(fliterValue) }} />
+        </Card>
+        <Card>
           <Button type="primary" onClick={this.handleShowOpen} style={{ marginBottom: 20 }}>开通城市</Button>
           <Table
             rowKey='id'

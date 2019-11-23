@@ -2,6 +2,12 @@ import React from 'react';
 import { Table } from 'antd';
 import Utils from '../../utils/utils';
 
+/**
+ * 本组件封装了 antd Table 组件，自带loading
+ * @param {Function} apiGetList 必填项，传入 api 接口的调用函数，例如：this.$api.orderList
+ * @param {} onRef 获取本组件的对象
+ * @param {...} otherAttribute 其他antd Table组件的方法
+ */
 export default class ComponentTable extends React.Component {
   state = {
     // 表格数据源
@@ -21,7 +27,10 @@ export default class ComponentTable extends React.Component {
    * 请求接口
    * @param {Object} fliterValue 筛选条件参数
    */
-  getList = async (fliterValue) => {
+  getList = async (fliterValue = {}) => {
+    if (!this.props.hasOwnProperty('apiGetList')) {
+      return;
+    }
     // 获取父组件传进来的请求接口
     const apiGetList = this.props.apiGetList;
     this.setState({
@@ -41,31 +50,28 @@ export default class ComponentTable extends React.Component {
   }
 
   componentDidMount() {
-    this.props.onRef(this)
+    if (this.props.hasOwnProperty('onRef')) {
+      this.props.onRef(this)
+    }
     this.getList();
   }
 
   render() {
-    const columns = this.props.columns;
-    const rowKey = this.props.rowKey;
-    
+    const rowKey = this.props.rowKey || 'id';
     // 自定义属性
-    const tableAttr = ['rowKey', 'columns', 'onRef', 'apiGetList'];
+    const tableAttr = ['rowKey', 'onRef', 'apiGetList'];
     const props = {};
 
-    // 过滤从父级获取的属性
+    // 过滤从父级获取的属性，过滤掉自己覆盖写的方法，剩下的属性直接赋值给原生antd的Table
     Object.keys(this.props).filter(
       (key) => !tableAttr.includes(key)
     ).forEach((key) => {
       props[key] = this.props[key]
-    })
-    console.log(props);
-
+    });
 
     return (
       <Table
         rowKey={rowKey}
-        columns={columns}
         bordered
         dataSource={this.state.dataSource}
         pagination={this.state.pagination}
