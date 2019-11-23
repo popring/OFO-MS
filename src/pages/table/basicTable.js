@@ -18,12 +18,10 @@ export default class basicTable extends React.Component {
     })
     this.$api.tableBasic()
       .then((res) => {
-        setTimeout(() => {
-          this.setState({
-            isLoading: false,
-            dataSource: res.data
-          })
-        }, 500)
+        this.setState({
+          isLoading: false,
+          dataSource: res.data
+        })
       });
   }
 
@@ -46,9 +44,9 @@ export default class basicTable extends React.Component {
       onOk: () => {
         let dataSource = this.state.dataSource;
         dataSource = dataSource.filter(v1 => {
-          return !selectedRowKeys.some((v2,index) => {
+          return !selectedRowKeys.some((v2, index) => {
             if (v1.id === v2) {
-              selectedRowKeys.splice(index,1);
+              selectedRowKeys.splice(index, 1);
               console.log(selectedRowKeys);
               return true
             }

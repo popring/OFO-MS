@@ -18,12 +18,10 @@ export default class basicTable extends React.Component {
     })
     this.$api.tableBasic()
       .then((res) => {
-        setTimeout(() => {
-          this.setState({
-            isLoading: false,
-            dataSource: res.data
-          })
-        }, 500)
+        this.setState({
+          isLoading: false,
+          dataSource: res.data
+        })
       });
   }
 
