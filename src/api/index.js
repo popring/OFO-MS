@@ -1,10 +1,10 @@
 import axios from '../config/axiosConfig';
 
 export default {
-   /**
-   * 订单列表
-   * @param {Object} params 请求参数
-   */
+  /**
+  * 订单列表
+  * @param {Object} params 请求参数
+  */
   orderList(params) {
     return axios.get('/order/list', { params });
   },
@@ -27,5 +27,11 @@ export default {
    */
   tableBasic() {
     return axios.get('/table/basictable')
+  },
+  /**
+   * 通用表格demo接口 升级接口
+   */
+  tableBasic2(params) {
+    return axios.get('/table/basictable2', { params })
   }
 }

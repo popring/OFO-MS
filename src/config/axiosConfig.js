@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Modal } from 'antd';
 
 let URL = {
-  olineURL: 'https://www.easy-mock.com/mock/5dc62b0a2b69d9223b633bce/api',
+  olineURL: 'http://rap2api.taobao.org/app/mock/237719/api',
   mockURL: 'http://localhost:5000/api'
 }
 axios.defaults.baseURL = URL.mockURL;

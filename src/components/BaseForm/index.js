@@ -5,6 +5,7 @@ import Utils from '../../utils/utils';
 
 const FormItem = Form.Item;
 const { RangePicker } = DatePicker;
+const Option = Select.Option;
 class FilterForm extends React.Component {
 
   handleFilterSubmit = (e) => {
@@ -34,7 +35,26 @@ class FilterForm extends React.Component {
       let placeholder = item.placeholder || '';
       let style = item.style || {};
 
-      if (type === 'SELECT') {
+      if (type === 'SELECT' && field === 'city_id') {
+        // 城市选择框模板
+        const SELECT = (
+          <FormItem label='城市' key={field} >
+            {
+              getFieldDecorator(field, {
+                initialValue: '0'
+              })(
+                <Select style={{ width: 150 }}>
+                  <Option value="0">全部</Option>
+                  <Option value="1">北京市</Option>
+                  <Option value="2">上海市</Option>
+                  <Option value="3">广州市</Option>
+                  <Option value="4">深圳市</Option>
+                </Select>
+              )
+            }
+          </FormItem>);
+        formListItem.push(SELECT);
+      } else if (type === 'SELECT') {
         const SELECT = (
           <FormItem label={label} key={field} >
             {

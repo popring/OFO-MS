@@ -31,6 +31,9 @@ import City from './pages/city';
 import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
 
+// User
+import User from './pages/user';
+
 // 匹配路由错误
 import NoMatch from './pages/nomatch';
 
@@ -61,6 +64,7 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/table/high" component={HeightTable}></Route>
                   <Route path="/admin/city" component={City}></Route>
                   <Route path="/admin/order" component={Order}></Route>
+                  <Route path="/admin/user" component={User}></Route>
                   <Route component={NoMatch}></Route>
                 </Switch>
               </Admin>
