@@ -15,7 +15,10 @@ export default class ComponentTable extends React.Component {
     // 分页
     pagination: {},
     // 加载中
-    isLoading: false
+    isLoading: false,
+    // 单选数据
+    selectedRows: null,
+    selectedRowKeys: null,
   }
 
   // 请求参数
@@ -59,7 +62,7 @@ export default class ComponentTable extends React.Component {
   render() {
     const rowKey = this.props.rowKey || 'id';
     // 自定义属性
-    const tableAttr = ['rowKey', 'onRef', 'apiGetList'];
+    const tableAttr = ['rowKey', 'onRef', 'apiGetList', 'openRowSelection', 'getRowKeys'];
     const props = {};
 
     // 过滤从父级获取的属性，过滤掉自己覆盖写的方法，剩下的属性直接赋值给原生antd的Table
@@ -68,6 +71,36 @@ export default class ComponentTable extends React.Component {
     ).forEach((key) => {
       props[key] = this.props[key]
     });
+
+    // 单选
+    if (this.props.openRowSelection) {
+      const { selectedRowKeys, selectedRows } = this.state;
+      const rowSelection = {
+        type: 'radio',
+        selectedRowKeys: selectedRowKeys,
+        onChange: (selectedRowKeys, selectedRows) => {
+          this.setState({
+            selectedRows: selectedRows,
+            selectedRowKeys: selectedRowKeys
+          })
+        }
+      };
+
+      const onRow = record => {
+        return {
+          onClick: e => {
+            this.setState({
+              selectedRows: record,
+              selectedRowKeys: [record[rowKey]]
+            })
+          },
+        }
+      }
+
+      props.rowSelection = rowSelection;
+      props.onRow = onRow;
+    }
+
 
     return (
       <Table

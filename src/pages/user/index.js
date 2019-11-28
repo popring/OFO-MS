@@ -6,8 +6,6 @@ import BaseForm from '@/components/BaseForm';
 export class User extends Component {
 
   state = {
-    selectedRows: null,
-    selectedRowKeys: null,
     btnTips: '请选中一行数据进行操作'
   }
   formList = [
@@ -39,7 +37,8 @@ export class User extends Component {
 
   staffEdit = () => {
     console.log('edit');
-    console.log(this.state.selectedRowKeys);
+    // console.log(this.state.selectedRowKeys);
+    // console.log(this.child);
   }
 
   staffInfo = () => {
@@ -60,22 +59,9 @@ export class User extends Component {
       { title: '地址', dataIndex: 'address' },
       { title: '打卡时间', dataIndex: 'time' }
     ];
-    const selectedRowKeys = this.state.selectedRowKeys
-    const rowSelection = {
-      type: 'radio',
-      selectedRowKeys: selectedRowKeys,
-      onChange: (selectedRowKeys, selectedRows) => {
-        this.setState({
-          selectedRows: selectedRows,
-          selectedRowKeys: selectedRowKeys
-        })
-      }
-    };
+    const { selectedRowKeys } = this.state;
+
     let btnTips = this.state.btnTips;
-    if (selectedRowKeys !== null) {
-      btnTips = '';
-    }
-    console.log(btnTips);
     return (
       <div>
         <Card>
@@ -84,7 +70,7 @@ export class User extends Component {
         <Card>
           <Button type="primary" icon="plus" onClick={this.staffCreate}>创建员工</Button>
           <Tooltip placement="top" title={btnTips}>
-            <Button type="primary" icon="edit" onClick={this.staffEdit} disabled={!selectedRowKeys}>编辑员工</Button>
+            <Button type="primary" icon="edit" onClick={this.staffEdit} disabled={selectedRowKeys}>编辑员工</Button>
           </Tooltip>
           <Tooltip placement="top" title={btnTips}>
             <Button type="warning" icon="info-circle" onClick={this.staffInfo} disabled={!selectedRowKeys}>查看详情</Button>
@@ -99,17 +85,7 @@ export class User extends Component {
             columns={columns}
             rowKey="id"
             style={{ marginTop: 20 }}
-            rowSelection={rowSelection}
-            onRow={record => {
-              return {
-                onClick: e => {
-                  this.setState({
-                    selectedRow: record,
-                    selectedRowKeys: [record.id]
-                  })
-                },
-              }
-            }}
+            openRowSelection={true}
           />
         </Card>
       </div>
