@@ -3,6 +3,22 @@ import { Form, Button, Select, Input, DatePicker } from 'antd';
 import moment from "moment";
 import Utils from '../../utils/utils';
 
+/**
+ * 本组件封装了 筛选查询表格的表单组件
+ * 
+ * Example
+ * formList = [
+ *   {
+ *     type: 'INPUT',
+ *     field: 'username',
+ *     label: '用户名',
+ *     placeholder: '请输入用户名称'
+ *   },
+ *   {
+ *     type: 'RANGEDATE'
+ *   }
+ * ]
+ */
 const FormItem = Form.Item;
 const { RangePicker } = DatePicker;
 const Option = Select.Option;

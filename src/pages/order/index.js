@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Form, Button, Modal } from 'antd';
+import { Card, Form, Button, Modal, message } from 'antd';
 import Table from '@/components/Table';
 import BaseForm from '@/components/BaseForm';
 
@@ -60,6 +60,16 @@ class order extends React.Component {
 
   getList = (fliterValue) => {
     this.child.getList(fliterValue)
+  }
+
+  closeOrder = () => {
+    Modal.confirm({
+      title: '友情提示',
+      content: '确认关闭此订单吗？',
+      onOk: () => {
+        message.success('此订单关闭成功');
+      }
+    })
   }
 
   render() {
@@ -142,7 +152,7 @@ class order extends React.Component {
         </Card>
         <Card>
           <Button type="primary" style={{ marginBottom: 10 }} onClick={this.openDetail}>订单详情</Button>
-          <Button type="primary" style={{ marginBottom: 10 }}>结束订单</Button>
+          <Button type="primary" style={{ marginBottom: 10 }} onClick={this.closeOrder}>结束订单</Button>
           <Table
             onRef={this.onTableRef}
             apiGetList={this.$api.orderList}

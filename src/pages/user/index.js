@@ -6,7 +6,11 @@ import BaseForm from '@/components/BaseForm';
 export class User extends Component {
 
   state = {
-    btnTips: '请选中一行数据进行操作'
+    btnTips: '请选中一行数据进行操作',
+    rowSelect: {
+      key: null,
+      row: null
+    }
   }
   formList = [
     {
@@ -26,6 +30,11 @@ export class User extends Component {
     }
   ]
 
+  rowSelect = {
+    key: null,
+    row: null
+  }
+
   handleSubmit = (vals) => {
     this.child.getList(vals);
     console.log(vals);
@@ -37,8 +46,8 @@ export class User extends Component {
 
   staffEdit = () => {
     console.log('edit');
-    // console.log(this.state.selectedRowKeys);
-    // console.log(this.child);
+    const { row } = this.state;
+    console.log(row);
   }
 
   staffInfo = () => {
@@ -59,9 +68,12 @@ export class User extends Component {
       { title: '地址', dataIndex: 'address' },
       { title: '打卡时间', dataIndex: 'time' }
     ];
-    const { selectedRowKeys } = this.state;
-
+    const { key } = this.state;
     let btnTips = this.state.btnTips;
+    if (key) {
+      btnTips = '';
+    }
+    console.log('父组件  render');
     return (
       <div>
         <Card>
@@ -70,13 +82,13 @@ export class User extends Component {
         <Card>
           <Button type="primary" icon="plus" onClick={this.staffCreate}>创建员工</Button>
           <Tooltip placement="top" title={btnTips}>
-            <Button type="primary" icon="edit" onClick={this.staffEdit} disabled={selectedRowKeys}>编辑员工</Button>
+            <Button type="primary" icon="edit" onClick={this.staffEdit} disabled={!key}>编辑员工</Button>
           </Tooltip>
           <Tooltip placement="top" title={btnTips}>
-            <Button type="warning" icon="info-circle" onClick={this.staffInfo} disabled={!selectedRowKeys}>查看详情</Button>
+            <Button type="warning" icon="info-circle" onClick={this.staffInfo} disabled={!key}>查看详情</Button>
           </Tooltip>
           <Tooltip placement="top" title={btnTips}>
-            <Button type="danger" icon="delete" onClick={this.staffDelete} disabled={!selectedRowKeys}>删除员工</Button>
+            <Button type="danger" icon="delete" onClick={this.staffDelete} disabled={!key}>删除员工</Button>
           </Tooltip>
 
           <Table
@@ -85,7 +97,15 @@ export class User extends Component {
             columns={columns}
             rowKey="id"
             style={{ marginTop: 20 }}
-            openRowSelection={true}
+            openRowSelection={(key, row) => {
+              const { key: oldKey, row: oldRow } = this.state;
+              if (oldKey !== key && oldRow !== row) {
+                this.setState({
+                  key,
+                  row
+                })
+              }
+            }}
           />
         </Card>
       </div>
