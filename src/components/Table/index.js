@@ -91,8 +91,6 @@ export default class ComponentTable extends React.Component {
   }
 
   render() {
-    console.log('子组件  render');
-    debugger
     const rowKey = this.props.rowKey || 'id';
     // 自定义属性
     const tableAttr = ['rowKey', 'onRef', 'apiGetList', 'openRowSelection'];

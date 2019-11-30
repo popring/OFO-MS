@@ -33,5 +33,15 @@ export default {
    */
   tableBasic2(params) {
     return axios.get('/table/basictable2', { params })
+  },
+
+  userStaffCreate(params) {
+    return axios.post('/user/add', {...params})
+  },
+  userStaffEdit(params) {
+    return axios.post('/user/edit', {...params})
+  },
+  userStaffDelete(params) {
+    return axios.post('/user/delete', params)
   }
 }
