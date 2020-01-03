@@ -2,10 +2,10 @@ import axios from 'axios';
 import { Modal } from 'antd';
 
 let URL = {
-  olineURL: 'http://rap2api.taobao.org/app/mock/237719/api',
-  mockURL: 'http://localhost:5000/api'
+  olineURL: 'http://localhost:5000/api',
+  nativeURL: '/api'
 }
-axios.defaults.baseURL = URL.mockURL;
+axios.defaults.baseURL = URL.nativeURL;
 
 
 // 添加请求拦截器
