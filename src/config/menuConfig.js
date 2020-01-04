@@ -70,7 +70,7 @@ const menuList = [
       ]
   },
   {
-      title: '富文本',
+      title: 'Markdown 编辑器',
       key: '/rich'
   },
   {
