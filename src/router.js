@@ -37,6 +37,10 @@ import User from './pages/user';
 // Echarts
 import Bar from './pages/echarts/bar';
 import Pie from './pages/echarts/pie';
+import Line from './pages/echarts/line';
+
+// 文本编辑器
+import Rich from './pages/rich';
 
 // 匹配路由错误
 import NoMatch from './pages/nomatch';
@@ -71,6 +75,8 @@ export default class IRouter extends React.Component {
                   <Route path="/admin/user" component={User}></Route>
                   <Route path="/admin/charts/bar" component={Bar}></Route>
                   <Route path="/admin/charts/pie" component={Pie}></Route>
+                  <Route path="/admin/charts/line" component={Line}></Route>
+                  <Route path="/admin/rich" component={Rich}></Route>
                   <Route component={NoMatch}></Route>
                 </Switch>
               </Admin>
