@@ -33,15 +33,17 @@
     padding: 10px;
 
     .breadcrumb-title {
-      font-size: @fontC;
       text-align: center;
+      h2 {
+        margin-bottom: 0;
+      }
       &::after {
         position: absolute;
         content: "";
         border-top: 15px solid @colorM;
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
-        top: 30px;
+        bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
       }

@@ -72,7 +72,7 @@ const editor = 'for-editor'
     const { text } = this.state;
     return (
       <div>
-        <Card title="Markdown 文本编辑器">
+        <Card>
           <Editor
             value={text}
             subfield
