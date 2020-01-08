@@ -6,27 +6,28 @@ export default class Footer extends React.Component {
 
   state = {
     start: '2019-10-15 15:20:02',
+    end: '2020-1-8 23:26:43',
     diffTime: null,
     timer: null
   }
 
   componentWillMount() {
     this.fromNow();
-    const timer = setInterval(() => {
-      this.fromNow();
-    }, 1000);
-    this.setState({
-      timer
-    })
+    // const timer = setInterval(() => {
+    //   this.fromNow();
+    // }, 1000);
+    // this.setState({
+    //   timer
+    // })
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.timer);
+    // clearInterval(this.state.timer);
   }
 
   fromNow = () => {
     const start = moment(this.state.start);
-    const now = moment();
+    const now = moment(this.state.end);
     let time = now.diff(start, 'seconds');
     let day = Math.floor(time / 60 / 60 / 24);
     let hour = Math.floor(time / 60 / 60 % 24);
@@ -41,7 +42,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        版权所有：OLO，距离本项目开启已经过了{this.state.diffTime}，继续加油。
+        版权所有：OLO，本项目经历{this.state.diffTime}，终将以bug满满结束。
       </div>
     );
   }
