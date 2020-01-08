@@ -119,6 +119,7 @@ class IRouter extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Redirect exact from="/" to="/admin" />
           <Route path="/login" component={Login}></Route>
           <Route
             path="/admin"
