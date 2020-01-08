@@ -6,14 +6,22 @@ export default class Footer extends React.Component {
 
   state = {
     start: '2019-10-15 15:20:02',
-    diffTime: null
+    diffTime: null,
+    timer: null
   }
 
   componentWillMount() {
     this.fromNow();
-    setInterval(() => {
+    const timer = setInterval(() => {
       this.fromNow();
-    }, 1000)
+    }, 1000);
+    this.setState({
+      timer
+    })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
   }
 
   fromNow = () => {
@@ -33,7 +41,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        版权所有：慕课网&河畔一脚，距离本项目开启已经过了{this.state.diffTime}，继续加油。
+        版权所有：OLO，距离本项目开启已经过了{this.state.diffTime}，继续加油。
       </div>
     );
   }

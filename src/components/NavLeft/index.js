@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './index.less'
 import MenuConfig from '../../config/menuConfig.js'
 import { switchMenu } from '@/redux/action';
@@ -22,7 +22,7 @@ class NavLeft extends React.Component {
 
   handleClick = ({ item, key }) => {
     if (key === this.state.currentKey) return;
-    
+
     const { dispatch } = this.props;
     dispatch(switchMenu(item.props.title));
     this.setState({
@@ -49,13 +49,15 @@ class NavLeft extends React.Component {
   }
 
   render() {
-    const currentKey = this.state.currentKey || '';
+    const currentKey = this.state.currentKey || '/home';
     return (
       <div>
-        <div className="logo">
-          <img src="/assets/logo-ant.svg" alt="logo" />
-          <h1>Imooc MS</h1>
-        </div>
+        <Link to="/admin">
+          <div className="logo">
+            <img src="/assets/logo-ant.svg" alt="logo" />
+            <h1>小黄车 MS</h1>
+          </div>
+        </Link>
         <Menu
           theme="dark"
           mode="inline"

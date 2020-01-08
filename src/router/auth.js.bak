@@ -1,0 +1,42 @@
+import React, { Component } from 'react';
+import { Router, Redirect } from 'react-router-dom';
+
+export class Auth extends Component {
+
+  renderRouter = (config) => {
+    if (!Array.isArray(config)) return;
+    let router;
+    for (const item of config) {
+      if (item.hasOwnProperty('routes')) {
+        router += (<Router
+          path={item.path}
+          component={item.component}
+          render={() => {
+            this.renderRouter(item.routes)
+          }}></Router>)
+      } else if (item.redirect) {
+        // router += <Redirect from={item.from} to={item.to} />
+        router += <Redirect {...item} />
+      } else {
+        router += <Router path={item.path} component={item.component}></Router>
+      }
+    }
+    return router;
+  }
+
+
+
+  render() {
+    const { config } = this.props;
+    console.log(config, 'config');
+    // console.log(router, 'router');
+    return this.renderRouter(config);
+    // return (
+    //   <div>
+    //     <Route path="/admin/home" component={Home}></Route>
+    //   </div>
+    // );
+  }
+}
+
+export default Auth;

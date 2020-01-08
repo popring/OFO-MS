@@ -7,8 +7,9 @@ const initValue = {
   menu: {
     menuName: ''
   },
-  user: {
-    userName: '湖畔一脚'
+  userInfo: {
+    userName: null,
+    token: null
   }
 }
 

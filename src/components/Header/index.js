@@ -1,26 +1,30 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import moment from 'moment';
 import { connect } from 'react-redux';
 
-import './index.less'
+import './index.less';
 class Header extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      date: '', //2019-10-15 15:20:02
+      date: '', //2019-10-15
+      datetimer: null,
       weather: '多云转晴'
     };
   }
 
   componentWillMount() {
-    setInterval(() => {
       this.setState({
-        date: moment().format('YYYY-MM-DD HH:mm:ss')
+        date: moment().format('YYYY-MM-DD')
       })
-    }, 1000)
+  }
+
+  handleLogOut = () => {
+    window.sessionStorage.removeItem('userInfo');
+    this.props.history.push('/login');
   }
 
   render() {
@@ -32,11 +36,11 @@ class Header extends React.Component {
             menuType ?
               <Col span={6} className="logo">
                 <img src="/assets/logo-ant.svg" alt="" />
-                <span>IMooc 通用管理系统</span>
+                <span>小黄车 通用管理系统</span>
               </Col> : ''
           }
-          <span>欢迎，{userName}</span>
-          <a href="#/">退出</a>
+          <span>{userName ? '欢迎，' + userName : '请登录'}</span>
+          <Button to="/login" onClick={this.handleLogOut}>退出</Button>
         </Row>
         {
           menuType ? '' :
@@ -58,7 +62,7 @@ class Header extends React.Component {
 const mapStateToProps = state => {
   return {
     menuName: state.menu.menuName,
-    userName: state.user.userName
+    userName: state.userInfo.userName
   }
 }
 

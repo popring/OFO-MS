@@ -5,9 +5,9 @@
 import { combineReducers } from 'redux';
 
 import menu from './menu';
-import user from './user';
+import userInfo from './userInfo';
 
 export default combineReducers({
   menu,
-  user
+  userInfo
 })

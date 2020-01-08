@@ -17,7 +17,7 @@ export default class Admin extends React.Component {
             <NavLeft />
           </Col>
           <Row span={20} className="main">
-            <Header className="header" />
+            <Header className="header" history={this.props.history} />
             <Row className="content">
               {this.props.children}
             </Row>
