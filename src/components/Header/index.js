@@ -24,7 +24,7 @@ class Header extends React.Component {
 
   handleLogOut = () => {
     window.sessionStorage.removeItem('userInfo');
-    this.props.history.push('/login');
+    this.props.routeProps.history.push('/login');
   }
 
   render() {

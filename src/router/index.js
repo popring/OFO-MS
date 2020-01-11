@@ -129,7 +129,7 @@ class IRouter extends React.Component {
                 return <Redirect to="/login" ></Redirect>
               }
               return (
-                <Admin history={props.history}>
+                <Admin routeProps={props}>
                   <Switch>
                     <Redirect exact from="/admin" to="/admin/home"></Redirect>
                     <Route path="/admin/home" component={Home}></Route>

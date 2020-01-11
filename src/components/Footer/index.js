@@ -11,18 +11,8 @@ export default class Footer extends React.Component {
     timer: null
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fromNow();
-    // const timer = setInterval(() => {
-    //   this.fromNow();
-    // }, 1000);
-    // this.setState({
-    //   timer
-    // })
-  }
-
-  componentWillUnmount() {
-    // clearInterval(this.state.timer);
   }
 
   fromNow = () => {

@@ -14,10 +14,10 @@ export default class Admin extends React.Component {
       <div style={{ height: "100%" }}>
         <Row className="container">
           <Col span={4} className="nav-left">
-            <NavLeft />
+            <NavLeft routeProps={this.props.routeProps} />
           </Col>
           <Row span={20} className="main">
-            <Header className="header" history={this.props.history} />
+            <Header className="header" routeProps={this.props.routeProps} />
             <Row className="content">
               {this.props.children}
             </Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu } from 'antd';
 import { NavLink, Link } from 'react-router-dom';
 import './index.less'
-import MenuConfig from '../../config/menuConfig.js'
+import MenuConfig from '@/config/menuConfig.js'
 import { switchMenu } from '@/redux/action';
 import { connect } from 'react-redux';
 const { SubMenu } = Menu;
@@ -10,13 +10,18 @@ const { SubMenu } = Menu;
 
 class NavLeft extends React.Component {
   state = {
-    currentKey: ''
+    currentKey: '',
+    menuTreeNode: null
   }
-  componentWillMount() {
+  componentDidMount() {
+    console.log(this.props);
+    let currentKey = this.props.routeProps.history.location.pathname;
+    if (currentKey === '/admin') currentKey = '/admin/home'
     const menuTreeNode = this.renderMenu(MenuConfig);
 
     this.setState({
-      menuTreeNode
+      menuTreeNode,
+      currentKey
     })
   }
 
@@ -49,7 +54,7 @@ class NavLeft extends React.Component {
   }
 
   render() {
-    const currentKey = this.state.currentKey || '/home';
+    const currentKey = this.state.currentKey || '/admin/home';
     return (
       <div>
         <Link to="/admin">
@@ -62,6 +67,7 @@ class NavLeft extends React.Component {
           theme="dark"
           mode="inline"
           onClick={(p) => this.handleClick(p)}
+          defaultSelectedKeys={['/admin/home']}
           selectedKeys={currentKey}
         >
           {this.state.menuTreeNode}
