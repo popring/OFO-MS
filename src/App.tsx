@@ -1,11 +1,18 @@
+/*
+ * @Author: Harry.Hao
+ * @Date: 2020-01-14 20:07:44
+ * @Last Modified by: Harry.Hao
+ * @Last Modified time: 2020-01-14 20:08:32
+ */
+
 import React, { Component } from 'react';
 import { Layout, Menu, Icon, Breadcrumb } from 'antd';
+import { RouteComponentProps } from 'react-router-dom';
 import './App.less';
-import Test from 'components/demo';
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export class App extends Component {
+export class App extends Component<RouteComponentProps, any> {
   state = {
     collapsed: false
   };

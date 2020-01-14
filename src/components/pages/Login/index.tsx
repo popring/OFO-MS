@@ -1,3 +1,10 @@
+/*
+ * @Author: Harry.Hao
+ * @Date: 2020-01-14 19:11:51
+ * @Last Modified by: Harry.Hao
+ * @Last Modified time: 2020-01-14 19:32:07
+ */
+
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
@@ -5,7 +12,7 @@ import './index.less';
 // import { connect } from 'react-redux';
 // import { userLogin } from '@/redux/action';
 
-class Login extends React.Component<FormComponentProps> {
+class Login extends React.Component<FormComponentProps, any> {
   handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     this.props.form.validateFields(err => {
@@ -32,7 +39,11 @@ class Login extends React.Component<FormComponentProps> {
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码' }]
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密    码(管理员 admin, 用户 user)" />
+                <Input
+                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  type="password"
+                  placeholder="密    码(管理员 admin, 用户 user)"
+                />
               )}
             </Form.Item>
             <Form.Item>

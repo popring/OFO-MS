@@ -174,5 +174,5 @@ class Demo extends React.Component<IFormComponentProps> {
   }
 }
 
-const WrappedDemo = Form.create({ name: 'validate_other' })(Demo);
+const WrappedDemo = Form.create({ name: 'demo' })(Demo);
 export default WrappedDemo;
