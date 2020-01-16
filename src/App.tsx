@@ -2,13 +2,15 @@
  * @Author: Harry.Hao
  * @Date: 2020-01-14 20:07:44
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-14 20:08:32
+ * @Last Modified time: 2020-01-16 13:29:02
  */
 
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, Breadcrumb } from 'antd';
+import { Layout, Icon, Breadcrumb } from 'antd';
 import { RouteComponentProps } from 'react-router-dom';
 import './App.less';
+import ContentRouter from './router/AppRouter';
+import SlideCustom from 'components/SlideCustom';
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -26,34 +28,30 @@ export class App extends Component<RouteComponentProps, any> {
   render() {
     return (
       <Layout className="layout">
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+        <Sider
+          style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
+          <SlideCustom></SlideCustom>
         </Sider>
-        <Layout>
+        <Layout style={{ marginLeft: 200 }}>
           <Header>
-            <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              onClick={this.toggle}
+            />
           </Header>
-          <Content>
+          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
             <Breadcrumb>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
+              <Breadcrumb.Item>Application Center</Breadcrumb.Item>
+              <Breadcrumb.Item>Application List</Breadcrumb.Item>
+              <Breadcrumb.Item>An Application</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+            <ContentRouter />
           </Content>
           <Footer>OFO MS &copy;2020 Created by Harry Hao</Footer>
         </Layout>
