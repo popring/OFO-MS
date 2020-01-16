@@ -24,8 +24,18 @@ export const menus: {
       icon: 'bulb',
       subs: [
         { path: '/app/ui/buttons', component: 'Button', title: 'button', icon: 'border' },
-        { path: '/app/ui/modals', component: 'Modals', title: 'modals', icon: 'bell' }
-        // { path: '/admin/ui/loadings', component: 'Loadings', title: 'loading' }
+        { path: '/app/ui/modals', component: 'Modal', title: 'modals', icon: 'bell' },
+        {
+          path: '/app/ui/notification',
+          component: 'Notification',
+          title: 'Notification',
+          icon: 'info-circle'
+        },
+        { path: '/app/ui/loadings', component: 'Loading', title: 'loading', icon: 'exclamation-circle' },
+        { path: '/app/ui/messages', component: 'Message', title: 'Messages', icon: 'minus-circle' },
+        { path: '/app/ui/carousel', component: 'Carsouse', title: 'Carousel', icon: 'close-circle' },
+        { path: '/app/ui/tabs', component: 'Tabs', title: 'Tabs', icon: 'bell' },
+        // { path: '/app/ui/gallery', component: 'Gallery', title: 'Gallery', icon: 'bell' },
       ]
     }
   ],

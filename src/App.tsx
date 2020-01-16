@@ -2,7 +2,7 @@
  * @Author: Harry.Hao
  * @Date: 2020-01-14 20:07:44
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-16 13:29:02
+ * @Last Modified time: 2020-01-16 17:42:23
  */
 
 import React, { Component } from 'react';
@@ -16,12 +16,20 @@ const { Header, Sider, Content, Footer } = Layout;
 
 export class App extends Component<RouteComponentProps, any> {
   state = {
-    collapsed: false
+    collapsed: false,
+    mainStyle: {
+      marginLeft: 200
+    }
   };
 
   toggle = () => {
+    const { collapsed } = this.state;
+
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !collapsed,
+      mainStyle: {
+        marginLeft: collapsed ? 200 : 80
+      }
     });
   };
 
@@ -36,7 +44,7 @@ export class App extends Component<RouteComponentProps, any> {
           <div className="logo" />
           <SlideCustom></SlideCustom>
         </Sider>
-        <Layout style={{ marginLeft: 200 }}>
+        <Layout style={this.state.mainStyle}>
           <Header>
             <Icon
               className="trigger"
@@ -44,7 +52,7 @@ export class App extends Component<RouteComponentProps, any> {
               onClick={this.toggle}
             />
           </Header>
-          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+          <Content style={{ overflow: 'initial' }}>
             <Breadcrumb>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>Application Center</Breadcrumb.Item>

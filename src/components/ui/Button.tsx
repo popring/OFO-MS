@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Button, Radio } from 'antd';
-import './ui.less';
 import RadioGroup from 'antd/lib/radio/group';
 import { ButtonSize } from 'antd/lib/button';
+import './ui.less';
 
 interface IState {
   loading: boolean;
@@ -56,11 +56,20 @@ export default class App extends React.Component {
           <Button onClick={this.toggleLoading} type="primary" loading={this.state.loading}>
             按钮
           </Button>
-          <Button onClick={this.toggleLoading} shape="circle" loading={this.state.loading} type="primary" icon="delete"></Button>
+          <Button
+            onClick={this.toggleLoading}
+            shape="circle"
+            loading={this.state.loading}
+            type="primary"
+            icon="delete"></Button>
           <Button onClick={this.toggleLoading} loading={this.state.loading}>
             按钮
           </Button>
-          <Button onClick={this.toggleLoading} shape="circle" loading={this.state.loading} icon="delete"></Button>
+          <Button
+            onClick={this.toggleLoading}
+            shape="circle"
+            loading={this.state.loading}
+            icon="delete"></Button>
           <Button onClick={this.toggleLoading}>{this.state.loading ? '关闭' : '开启'}</Button>
         </Card>
         <br />
