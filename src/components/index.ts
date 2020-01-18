@@ -3,7 +3,7 @@
  * @Author: Harry.Hao
  * @Date: 2020-01-15 17:04:55
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-16 18:23:31
+ * @Last Modified time: 2020-01-18 15:12:57
  */
 
 import Demo from './demo';
@@ -16,6 +16,10 @@ import Message from './ui/Message';
 import Notification from './ui/Notification';
 import Carsouse from './ui/Carsouse';
 import Tabs from './ui/Tabs';
+import FormLogin from './Form/FormLogin';
+import FormRegister from './Form/FormRegister';
+import BasicTable from './Table/BasicTable';
+// import HeightTable from './Table/HeightTable';
 
 export default {
   Demo,
@@ -27,5 +31,9 @@ export default {
   Message,
   Notification,
   Tabs,
-  Carsouse
+  Carsouse,
+  FormLogin,
+  FormRegister,
+  BasicTable,
+  // HeightTable
 } as any;

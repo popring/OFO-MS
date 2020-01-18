@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
-import { menus, IMenu } from '../router/AppConfig';
+import { menus, IMenu } from 'router/AppConfig';
 import { NavLink, RouteComponentProps } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 export class SlideCustom extends Component<RouteComponentProps> {
   state = {
-    currentKey: []
+    currentKeys: [],
+    openKeys: []
   };
 
-  componentDidMount() {
+  handleMenukeys = () => {
     const currentKey = this.props.location.pathname;
-    this.setState({
-      currentKey: [currentKey]
-    });
-  }
+
+    let reg = new RegExp('(/[a-z]*){2}');
+    let openKey = reg.exec(currentKey) || [''];
+
+    return {
+      currentKeys: [currentKey],
+      openKeys: [openKey[0]]
+    };
+  };
 
   handleClick = ({ key }: any) => {
     this.setState({
-      currentKey: [key]
+      currentKeys: [key]
     });
   };
 
@@ -43,16 +49,18 @@ export class SlideCustom extends Component<RouteComponentProps> {
             <span>{item.title}</span>
           </span>
         }>
-        {item.subs?.map(sub => (sub.subs ? this.renderSubMenu(sub) : this.renderMenu(sub)))}
+        {item.subs?.map((sub: IMenu) => (sub.subs ? this.renderSubMenu(sub) : this.renderMenu(sub)))}
       </Menu.SubMenu>
     );
   };
 
   render() {
-    const currentKey = this.state.currentKey || '/app/home';
+    // const currentKeys = this.state.currentKeys || '/app/home';
+    // const { openKeys } = this.state;
+    const { currentKeys, openKeys } = this.handleMenukeys();
     return (
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['/app/home']} selectedKeys={currentKey}>
-        {menus.menus.map(item => (item.subs ? this.renderSubMenu(item) : this.renderMenu(item)))}
+      <Menu theme="dark" mode="inline" defaultOpenKeys={openKeys} selectedKeys={currentKeys}>
+        {menus.menus.map((item: IMenu) => (item.subs ? this.renderSubMenu(item) : this.renderMenu(item)))}
       </Menu>
     );
   }

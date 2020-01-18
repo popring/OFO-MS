@@ -16,6 +16,7 @@ module.exports = override(
   }),
   addWebpackAlias({
     "src": path.resolve(__dirname, './src'),
-    "components": path.resolve(__dirname, './src/components')
+    "components": path.resolve(__dirname, './src/components'),
+    "router": path.resolve(__dirname, './src/router')
   })
 )

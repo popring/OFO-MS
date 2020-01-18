@@ -34,8 +34,26 @@ export const menus: {
         { path: '/app/ui/loadings', component: 'Loading', title: 'loading', icon: 'exclamation-circle' },
         { path: '/app/ui/messages', component: 'Message', title: 'Messages', icon: 'minus-circle' },
         { path: '/app/ui/carousel', component: 'Carsouse', title: 'Carousel', icon: 'close-circle' },
-        { path: '/app/ui/tabs', component: 'Tabs', title: 'Tabs', icon: 'bell' },
+        { path: '/app/ui/tabs', component: 'Tabs', title: 'Tabs', icon: 'bell' }
         // { path: '/app/ui/gallery', component: 'Gallery', title: 'Gallery', icon: 'bell' },
+      ]
+    },
+    {
+      path: '/app/form',
+      title: '表单',
+      icon: 'bulb',
+      subs: [
+        { path: '/app/form/login', component: 'FormLogin', title: 'FormLogin' },
+        { path: '/app/form/reg', component: 'FormRegister', title: 'FormRegister' }
+      ]
+    },
+    {
+      path: '/app/table',
+      title: 'Table',
+      icon: 'bulb',
+      subs: [
+        { path: '/app/table/basic', component: 'BasicTable', title: 'BasicTable' },
+        { path: '/app/table/high', component: 'HeightTable', title: 'HeightTable' }
       ]
     }
   ],

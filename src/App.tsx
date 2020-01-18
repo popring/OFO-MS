@@ -2,7 +2,7 @@
  * @Author: Harry.Hao
  * @Date: 2020-01-14 20:07:44
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-16 17:42:23
+ * @Last Modified time: 2020-01-18 10:27:19
  */
 
 import React, { Component } from 'react';
@@ -10,7 +10,7 @@ import { Layout, Icon, Breadcrumb } from 'antd';
 import { RouteComponentProps } from 'react-router-dom';
 import './App.less';
 import ContentRouter from './router/AppRouter';
-import SlideCustom from 'components/SlideCustom';
+import SlideCustom from 'components/common/SlideCustom';
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -28,6 +28,7 @@ export class App extends Component<RouteComponentProps, any> {
     this.setState({
       collapsed: !collapsed,
       mainStyle: {
+        ...this.state.mainStyle,
         marginLeft: collapsed ? 200 : 80
       }
     });
@@ -46,11 +47,7 @@ export class App extends Component<RouteComponentProps, any> {
         </Sider>
         <Layout style={this.state.mainStyle}>
           <Header>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
+            <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
           </Header>
           <Content style={{ overflow: 'initial' }}>
             <Breadcrumb>
