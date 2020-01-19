@@ -2,7 +2,7 @@
  * @Author: Harry.Hao
  * @Date: 2020-01-14 20:07:44
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-18 10:27:19
+ * @Last Modified time: 2020-01-20 00:25:27
  */
 
 import React, { Component } from 'react';
@@ -11,6 +11,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import './App.less';
 import ContentRouter from './router/AppRouter';
 import SlideCustom from 'components/common/SlideCustom';
+import 'animate.css/animate.min.css';
 
 const { Header, Sider, Content, Footer } = Layout;
 

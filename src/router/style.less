@@ -1,0 +1,41 @@
+.router-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fade {
+  position: absolute;
+  top: 0;
+}
+
+/* src/App2/index.css */
+.fade-enter {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(20%);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-exit-active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-20%);
+  transition: all 1s;
+}

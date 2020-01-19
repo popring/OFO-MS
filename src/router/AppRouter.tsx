@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { menus as RoutesConfig, IMenu, IMenuBase } from './AppConfig';
 import AllComponents from 'components/index';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import './style.less';
 
-export class AppRouter extends Component {
+export class AppRouter extends Component<any> {
   createRoute = (key: string) => {
     return RoutesConfig[key].map((r: IMenu) => {
-      const route = (r: IMenuBase) => (
-        <Route path={r.path} component={AllComponents[r.component]} title={r.title} />
-      );
+      const route = (r: IMenuBase) => <Route key={r.path} path={r.path} component={AllComponents[r.component]} exact />;
 
       const subRoute = (r: IMenu) =>
         r.subs &&
@@ -21,13 +21,18 @@ export class AppRouter extends Component {
   };
 
   render() {
+    const { location } = this.props;
     return (
-      <Switch>
-        {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
-        <Redirect exact from="/app" to="/app/home" />
-      </Switch>
+      <TransitionGroup className={'router-wrapper'}>
+        <CSSTransition timeout={1000} key={location.pathname} classNames="fade" unmountOnExit>
+          <Switch location={location}>
+            {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
+            <Redirect exact from="/app" to="/app/home" />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     );
   }
 }
 
-export default AppRouter;
+export default withRouter(AppRouter);
