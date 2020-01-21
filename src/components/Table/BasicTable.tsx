@@ -96,7 +96,7 @@ export default class basicTable extends React.Component {
     };
 
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <Card title="多选表格">
           <Button type="primary" style={{ margin: '10px 0' }} onClick={this.getDataSource}>
             refresh

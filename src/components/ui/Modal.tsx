@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <Card title="基本状态框">
           <Button
             type="primary"

@@ -63,7 +63,7 @@ class FormRegister extends React.Component<FormComponentProps> {
     };
     const { userImg } = this.state;
     return (
-      <div>
+      <div style={{ width: '100%' }}>
         <Card title="注册表单">
           <Form>
             <FormItem label="用户名" {...formItemLayout}>

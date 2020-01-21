@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{width: '100%'}}>
         <Card title="普通按钮组">
           <Button type="primary">按钮</Button>
           <Button>按钮</Button>

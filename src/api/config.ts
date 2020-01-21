@@ -1,18 +1,18 @@
 /*
- * @Description: axios 配置
- * @Author: Harry.Hao
- * @Date: 2020-01-18 15:23:39
- * @Last Modified
- * time: 2020-01-18 15:23:39
+ * @Author: Harry.Hao 
+ * @Date: 2020-01-18 15:23:39 
+ * @Last Modified by:   Harry.Hao 
+ * @Last Modified time: 2020-01-20 23:06:34 
  */
+
 import axios from 'axios';
 import { Modal } from 'antd';
 
 let URL = {
-  olineURL: 'http://localhost:5000/api',
-  nativeURL: '/api'
+  koa: 'http://localhost:5000/v1/api',
+  static: '/api'
 };
-axios.defaults.baseURL = URL.nativeURL;
+axios.defaults.baseURL = URL.static;
 
 // 添加请求拦截器
 axios.interceptors.request.use(
