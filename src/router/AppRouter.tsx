@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
 import { menus as RoutesConfig, IMenu, IMenuBase } from './AppConfig';
 import AllComponents from 'components/index';
+import NoMatch from '../components/common/404';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './style.less';
 
@@ -34,6 +35,7 @@ export class AppRouter extends Component<RouteComponentProps> {
           <Switch location={location}>
             {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
             <Redirect exact from="/app" to="/app/home" />
+            <Route component={NoMatch} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>

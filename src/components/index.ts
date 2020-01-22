@@ -1,9 +1,9 @@
 /*
- * @Description: 路由组件总出口
+ * @Desc: 组件总出口
  * @Author: Harry.Hao
  * @Date: 2020-01-15 17:04:55
  * @Last Modified by: Harry.Hao
- * @Last Modified time: 2020-01-18 15:12:57
+ * @Last Modified time: 2020-01-22 16:22:25
  */
 
 import Demo from './demo';
@@ -19,7 +19,9 @@ import Tabs from './ui/Tabs';
 import FormLogin from './Form/FormLogin';
 import FormRegister from './Form/FormRegister';
 import BasicTable from './Table/BasicTable';
-// import HeightTable from './Table/HeightTable';
+import HeightTable from './Table/HeightTable';
+import City from './City/index';
+import NoMatch from './common/404';
 
 export default {
   Demo,
@@ -35,5 +37,7 @@ export default {
   FormLogin,
   FormRegister,
   BasicTable,
-  // HeightTable
+  HeightTable,
+  City,
+  NoMatch
 } as any;

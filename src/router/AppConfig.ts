@@ -55,7 +55,17 @@ export const menus: {
         { path: '/app/table/basic', component: 'BasicTable', title: 'BasicTable' },
         { path: '/app/table/high', component: 'HeightTable', title: 'HeightTable' }
       ]
-    }
+    },
+    {
+      path: '/app/city',
+      title: 'city',
+      component: 'City',
+      icon: 'message'
+    },
+    { path: '/app/order', component: 'Order', title: 'Order' },
+    { path: '/app/user', component: 'User', title: 'User' },
+    { path: '/app/rich', component: 'Rich', title: 'Rich' },
+    { path: '/app/NoMatch', component: 'NoMatch', title: 'NoMatch' }
   ],
   others: []
 };

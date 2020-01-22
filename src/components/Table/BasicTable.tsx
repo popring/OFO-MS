@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Table, Button, Modal, message } from 'antd';
-import { getTableBasic } from '../../api/index';
+import { tableBasic } from '../../api/index';
 
 export default class basicTable extends React.Component {
   state = {
@@ -17,7 +17,7 @@ export default class basicTable extends React.Component {
     this.setState({
       isLoading: true
     });
-    const res = await getTableBasic();
+    const res = await tableBasic();
     this.setState({
       isLoading: false,
       dataSource: res.data
