@@ -4,7 +4,6 @@ import { menus as RoutesConfig, IMenu } from './AppConfig';
 import AllComponents from 'components/index';
 import NoMatch from '../components/common/404';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './style.less';
 
 export class AppRouter extends Component<RouteComponentProps> {
   componentDidUpdate(prevProps: RouteComponentProps) {
