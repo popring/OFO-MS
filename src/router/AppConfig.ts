@@ -1,13 +1,10 @@
-export interface IMenuBase {
+export interface IMenu {
   path: string;
-  title: string;
+  breadcrumbName: string;
   component?: any;
   icon?: string;
   requireAuth?: boolean;
-}
-
-export interface IMenu extends IMenuBase {
-  subs?: IMenu[];
+  children?: IMenu[];
 }
 
 export const menus: {
@@ -16,56 +13,56 @@ export const menus: {
   [index: string]: any;
 } = {
   menus: [
-    { path: '/app/home', component: 'Home', title: '首页', icon: 'user' },
-    { path: '/app/demo', component: 'Demo', title: 'demo', icon: 'mobile' },
+    { path: '/app/home', component: 'Home', breadcrumbName: 'Home', icon: 'user' },
+    { path: '/app/demo', component: 'Demo', breadcrumbName: 'demo', icon: 'mobile' },
     {
       path: '/app/ui',
-      title: 'ui',
+      breadcrumbName: 'ui',
       icon: 'bulb',
-      subs: [
-        { path: '/app/ui/buttons', component: 'Button', title: 'button', icon: 'border' },
-        { path: '/app/ui/modals', component: 'Modal', title: 'modals', icon: 'bell' },
+      children: [
+        { path: '/app/ui/buttons', component: 'Button', breadcrumbName: 'button', icon: 'border' },
+        { path: '/app/ui/modals', component: 'Modal', breadcrumbName: 'modals', icon: 'bell' },
         {
           path: '/app/ui/notification',
           component: 'Notification',
-          title: 'Notification',
+          breadcrumbName: 'Notification',
           icon: 'info-circle'
         },
-        { path: '/app/ui/loadings', component: 'Loading', title: 'loading', icon: 'exclamation-circle' },
-        { path: '/app/ui/messages', component: 'Message', title: 'Messages', icon: 'minus-circle' },
-        { path: '/app/ui/carousel', component: 'Carsouse', title: 'Carousel', icon: 'close-circle' },
-        { path: '/app/ui/tabs', component: 'Tabs', title: 'Tabs', icon: 'bell' }
+        { path: '/app/ui/loadings', component: 'Loading', breadcrumbName: 'loading', icon: 'exclamation-circle' },
+        { path: '/app/ui/messages', component: 'Message', breadcrumbName: 'Messages', icon: 'minus-circle' },
+        { path: '/app/ui/carousel', component: 'Carsouse', breadcrumbName: 'Carousel', icon: 'close-circle' },
+        { path: '/app/ui/tabs', component: 'Tabs', breadcrumbName: 'Tabs', icon: 'bell' }
         // { path: '/app/ui/gallery', component: 'Gallery', title: 'Gallery', icon: 'bell' },
       ]
     },
     {
       path: '/app/form',
-      title: '表单',
+      breadcrumbName: '表单',
       icon: 'bulb',
-      subs: [
-        { path: '/app/form/login', component: 'FormLogin', title: 'FormLogin' },
-        { path: '/app/form/reg', component: 'FormRegister', title: 'FormRegister' }
+      children: [
+        { path: '/app/form/login', component: 'FormLogin', breadcrumbName: 'FormLogin' },
+        { path: '/app/form/reg', component: 'FormRegister', breadcrumbName: 'FormRegister' }
       ]
     },
     {
       path: '/app/table',
-      title: 'Table',
+      breadcrumbName: 'Table',
       icon: 'bulb',
-      subs: [
-        { path: '/app/table/basic', component: 'BasicTable', title: 'BasicTable' },
-        { path: '/app/table/high', component: 'HeightTable', title: 'HeightTable' }
+      children: [
+        { path: '/app/table/basic', component: 'BasicTable', breadcrumbName: 'BasicTable' },
+        { path: '/app/table/high', component: 'HeightTable', breadcrumbName: 'HeightTable' }
       ]
     },
     {
       path: '/app/city',
-      title: 'city',
+      breadcrumbName: 'city',
       component: 'City',
       icon: 'message'
     },
-    { path: '/app/order', component: 'Order', title: 'Order' },
-    { path: '/app/user', component: 'User', title: 'User' },
-    { path: '/app/rich', component: 'Rich', title: 'Rich' },
-    { path: '/app/NoMatch', component: 'NoMatch', title: 'NoMatch' }
+    { path: '/app/order', component: 'Order', breadcrumbName: 'Order' },
+    { path: '/app/user', component: 'User', breadcrumbName: 'User' },
+    { path: '/app/rich', component: 'Rich', breadcrumbName: 'Rich' },
+    { path: '/app/NoMatch', component: 'NoMatch', breadcrumbName: 'NoMatch' }
   ],
   others: []
 };

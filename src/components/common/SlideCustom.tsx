@@ -33,7 +33,7 @@ export class SlideCustom extends Component<RouteComponentProps> {
       <Menu.Item key={item.path} onClick={this.handleClick}>
         <NavLink to={item.path}>
           <Icon type={item.icon || 'compass'} />
-          <span>{item.title}</span>
+          <span>{item.breadcrumbName}</span>
         </NavLink>
       </Menu.Item>
     );
@@ -46,10 +46,10 @@ export class SlideCustom extends Component<RouteComponentProps> {
         title={
           <span>
             <Icon type={item.icon} />
-            <span>{item.title}</span>
+            <span>{item.breadcrumbName}</span>
           </span>
         }>
-        {item.subs?.map((sub: IMenu) => (sub.subs ? this.renderSubMenu(sub) : this.renderMenu(sub)))}
+        {item.children?.map((sub: IMenu) => (sub.children ? this.renderSubMenu(sub) : this.renderMenu(sub)))}
       </Menu.SubMenu>
     );
   };
@@ -60,7 +60,7 @@ export class SlideCustom extends Component<RouteComponentProps> {
     const { currentKeys, openKeys } = this.handleMenukeys();
     return (
       <Menu theme="dark" mode="inline" defaultOpenKeys={openKeys} selectedKeys={currentKeys}>
-        {menus.menus.map((item: IMenu) => (item.subs ? this.renderSubMenu(item) : this.renderMenu(item)))}
+        {menus.menus.map((item: IMenu) => (item.children ? this.renderSubMenu(item) : this.renderMenu(item)))}
       </Menu>
     );
   }

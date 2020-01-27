@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
-import { menus as RoutesConfig, IMenu, IMenuBase } from './AppConfig';
+import { menus as RoutesConfig, IMenu } from './AppConfig';
 import AllComponents from 'components/index';
 import NoMatch from '../components/common/404';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -15,12 +15,14 @@ export class AppRouter extends Component<RouteComponentProps> {
 
   createRoute = (key: string) => {
     return RoutesConfig[key].map((r: IMenu) => {
-      const route = (r: IMenuBase) => <Route key={r.path} path={r.path} component={AllComponents[r.component]} exact />;
+      const route = (r: IMenu) => (
+        <Route key={r.path} path={r.path} component={AllComponents[r.component]} title={r.breadcrumbName} exact />
+      );
 
       const subRoute = (r: IMenu) =>
-        r.subs &&
-        r.subs.map((subR: IMenu) => (
-          <Route path={subR.path} component={AllComponents[subR.component]} title={subR.title} />
+        r.children &&
+        r.children.map((subR: IMenu) => (
+          <Route path={subR.path} component={AllComponents[subR.component]} title={subR.breadcrumbName} />
         ));
 
       return r.component ? route(r) : subRoute(r);

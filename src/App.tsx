@@ -6,11 +6,12 @@
  */
 
 import React, { Component } from 'react';
-import { Layout, Icon, Breadcrumb } from 'antd';
+import { Layout, Icon } from 'antd';
 import { RouteComponentProps } from 'react-router-dom';
 import './App.less';
 import ContentRouter from './router/AppRouter';
 import SlideCustom from 'components/common/SlideCustom';
+import BreadcrumbCustom from 'components/common/BreadcrumbCustom';
 import 'animate.css/animate.min.css';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -51,12 +52,7 @@ export class App extends Component<RouteComponentProps, any> {
             <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
           </Header>
           <Content style={{ overflow: 'initial' }}>
-            <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>Application Center</Breadcrumb.Item>
-              <Breadcrumb.Item>Application List</Breadcrumb.Item>
-              <Breadcrumb.Item>An Application</Breadcrumb.Item>
-            </Breadcrumb>
+            <BreadcrumbCustom />
             <ContentRouter />
           </Content>
           <Footer>OFO MS &copy;2020 Created by Harry Hao</Footer>
