@@ -6,24 +6,23 @@
  * @Last Modified time: 2020-01-27 11:55:35
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter, Link, RouteComponentProps } from 'react-router-dom';
 import { menus, IMenu } from 'router/AppConfig';
 import { Breadcrumb } from 'antd';
 
-const breadcrumbNameMap: any = {
-  '/app': 'Home'
-};
-
-function breadMap(menu: IMenu[]): void {
+function createBreadcrumbNameMap(menu: IMenu[]): Object {
+  const bdMap: any = {};
   for (const item of menu) {
-    breadcrumbNameMap[item.path] = item.breadcrumbName;
-    if (item.children) breadMap(item.children);
+    bdMap[item.path] = item.breadcrumbName;
+    if (item.children) Object.assign(bdMap, createBreadcrumbNameMap(item.children));
   }
+  return bdMap;
 }
 
 function BreadcrumbCustom(props: RouteComponentProps) {
-  breadMap(menus.menus);
+  const [breadcrumbNameMap]: any = useState(() => ({ '/app': 'Home', ...createBreadcrumbNameMap(menus.menus) }));
+
   const { location } = props;
   const pathSnippets = location.pathname.split('/').filter(i => i);
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {

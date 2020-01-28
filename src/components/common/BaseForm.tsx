@@ -113,24 +113,22 @@ const initFormList = (props: IFormComponentProps) => {
   return formListItem;
 };
 
-const BaseForm = (props: IFormComponentProps) => {
-  return (
-    <Row>
-      <Form layout="inline" onSubmit={handleFilterSubmit(props)}>
-        {initFormList(props)}
-        <FormItem key="control">
-          <Col md={12}>
-            <Button type="primary" htmlType="submit">
-              查询
-            </Button>
-          </Col>
-          <Col md={12}>
-            <Button onClick={handleClearFilter(props.form)}>重置</Button>
-          </Col>
-        </FormItem>
-      </Form>
-    </Row>
-  );
-};
+const BaseForm = (props: IFormComponentProps) => (
+  <Row>
+    <Form layout="inline" onSubmit={handleFilterSubmit(props)}>
+      {initFormList(props)}
+      <FormItem key="control">
+        <Col md={12}>
+          <Button type="primary" htmlType="submit">
+            查询
+          </Button>
+        </Col>
+        <Col md={12}>
+          <Button onClick={handleClearFilter(props.form)}>重置</Button>
+        </Col>
+      </FormItem>
+    </Form>
+  </Row>
+);
 
 export default Form.create<IFormComponentProps>()(BaseForm);
