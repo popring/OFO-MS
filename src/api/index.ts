@@ -12,3 +12,5 @@ export const tableBasic = () => get('/table/basictable.json');
 export const tableBasic2 = () => get('/table/basictable2.json');
 
 export const openCities = (params: any) => get('/open_city.json', { params });
+
+export const orderList = (params: any) => get('/order/list.json', { params });

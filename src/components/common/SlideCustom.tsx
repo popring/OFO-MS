@@ -55,8 +55,6 @@ export class SlideCustom extends Component<RouteComponentProps> {
   };
 
   render() {
-    // const currentKeys = this.state.currentKeys || '/app/home';
-    // const { openKeys } = this.state;
     const { currentKeys, openKeys } = this.handleMenukeys();
     return (
       <Menu theme="dark" mode="inline" defaultOpenKeys={openKeys} selectedKeys={currentKeys}>

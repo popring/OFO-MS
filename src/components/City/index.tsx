@@ -67,7 +67,6 @@ type childType = {
 };
 
 export default class City extends React.Component {
-  state = {};
 
   // 存放子组件ref
   child: childType = {

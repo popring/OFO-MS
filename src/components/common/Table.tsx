@@ -31,7 +31,7 @@ import { Pagination } from '../../utils/utils';
  * />
  */
 
-type TableList = {
+export type TableListType = {
   title: string;
   dataIndex: string;
   key: string;
@@ -43,7 +43,7 @@ interface ITableComponents extends TableComponents {
   apiGetList: Function;
   onRef?: Function;
   openRowSelection?: Function;
-  columns: TableList[];
+  columns: TableListType[];
   onTest?: string;
   [index: string]: any;
 }
@@ -132,7 +132,7 @@ export default class ComponentTable extends React.Component<ITableComponents> {
         }
       };
 
-      const onRow = (record: any) => {
+      const onRow = (record: any, index: number) => {
         return {
           onClick: () => {
             this.setState({

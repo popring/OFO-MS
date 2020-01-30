@@ -21,6 +21,7 @@ import FormRegister from './Form/FormRegister';
 import BasicTable from './Table/BasicTable';
 import HeightTable from './Table/HeightTable';
 import City from './City/index';
+import Order from './Order/index';
 import NoMatch from './common/404';
 
 export default {
@@ -39,5 +40,6 @@ export default {
   BasicTable,
   HeightTable,
   City,
+  Order,
   NoMatch
 } as any;
