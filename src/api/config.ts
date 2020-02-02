@@ -1,8 +1,8 @@
 /*
- * @Author: Harry.Hao 
- * @Date: 2020-01-18 15:23:39 
- * @Last Modified by:   Harry.Hao 
- * @Last Modified time: 2020-01-20 23:06:34 
+ * @Author: Harry.Hao
+ * @Date: 2020-01-18 15:23:39
+ * @Last Modified by:   Harry.Hao
+ * @Last Modified time: 2020-01-20 23:06:34
  */
 
 import axios from 'axios';
@@ -54,6 +54,10 @@ axios.interceptors.response.use(
 export const get = axios.get;
 
 export const post = axios.post;
+
+export const put = axios.put;
+
+export const deletee = axios.delete;
 
 export function delay(time: number = 1000) {
   return new Promise(resolve => {

@@ -22,6 +22,7 @@ import BasicTable from './Table/BasicTable';
 import HeightTable from './Table/HeightTable';
 import City from './City/index';
 import Order from './Order/index';
+import User from './User';
 import NoMatch from './common/404';
 
 export default {
@@ -41,5 +42,6 @@ export default {
   HeightTable,
   City,
   Order,
+  User,
   NoMatch
 } as any;
