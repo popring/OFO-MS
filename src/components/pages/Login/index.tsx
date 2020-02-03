@@ -9,8 +9,6 @@ import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { FormComponentProps } from 'antd/lib/form/Form';
 import './index.less';
-// import { connect } from 'react-redux';
-// import { userLogin } from '@/redux/action';
 
 class Login extends React.Component<FormComponentProps, any> {
   handleSubmit = (e: React.FormEvent) => {
