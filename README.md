@@ -1,44 +1,66 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 小黄车后台管理系统 ts版本
 
-In the project directory, you can run:
+继个人学习项目，请多指教。
 
-### `yarn start`
+## Projects
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+前端网页的链接： https://github.com/popring/ImoocManager 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Feature
 
-### `yarn test`
+API接口统一管理 [具体代码](./src/api/index.js)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[拆分组件](#Components)
 
-### `yarn build`
+- 页面的顶部，左导航，底部 拆分为组件
+- 表格筛选条件表单抽离 
+- 表格渲染抽离
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Using
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+[create-react-app](https://www.npmjs.com/package/create-react-app)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[react](https://zh-hans.reactjs.org/)
 
-### `yarn eject`
+[Ant-Design](https://ant.design/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+无需将 `create-react-app` 解包，添加自定义配置
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[react-app-rewired](https://www.npmjs.com/package/react-app-rewired)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[customize-cra](https://www.npmjs.com/package/customize-cra)
+
+
+
+`react` 过渡动画
+
+[react-transition-group](https://reactcommunity.org/react-transition-group/)
+
+[animate.css](https://www.npmjs.com/package/animate.css)
+
+
+
+## Installation
+
+```bash
+git clone https://github.com/popring/ImoocManager.git
+
+cd ./OFO-MS
+```
+
+使用 yarn 或 npm 安装包 (个人使用yarn)，然后启动它
+
+```bash
+yarn
+
+yarn start
+```
+
+访问地址：[http://localhost:3000/
+
