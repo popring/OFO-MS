@@ -49,9 +49,9 @@ API接口统一管理 [具体代码](./src/api/index.js)
 ## Installation
 
 ```bash
-git clone https://github.com/popring/ImoocManager.git
+git clone https://github.com/popring/ofo-ms.git
 
-cd ./OFO-MS
+cd ./ofo-ms
 ```
 
 使用 yarn 或 npm 安装包 (个人使用yarn)，然后启动它
