@@ -2,11 +2,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # 小黄车后台管理系统 ts版本
 
-继个人学习项目，请多指教。
+本项目有 `js` 版本，请切换至分支 [ofo-ms-js](https://github.com/popring/ofo-ms/tree/ofo-ms-js)
 
-## Projects
+## explanation
 
-前端网页的链接： https://github.com/popring/ImoocManager 
+主分支默认为 `ts` 版本，去除 `js` 版本以下功能
+
+- `Echarts` 相关可视化图形
+- 地图相关页面
+
+新增
+
+- 动态生成路由，增加路由的可 `DIY` 性
+- 路由切换过渡动画
+- 路由，组件， `API` 定义统一出口
+- 配置 `i18` ，修改默认为中文
 
 ## Feature
 
@@ -27,6 +37,8 @@ API接口统一管理 [具体代码](./src/api/index.js)
 [Ant-Design](https://ant.design/)
 
 
+
+[axios](https://www.axios.com)
 
 
 
