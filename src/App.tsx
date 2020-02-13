@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import { Layout, Icon } from 'antd';
 import { RouteComponentProps } from 'react-router-dom';
-import './App.less';
 import ContentRouter from './router/AppRouter';
 import SlideCustom from 'components/common/SlideCustom';
 import BreadcrumbCustom from 'components/common/BreadcrumbCustom';
