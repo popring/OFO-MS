@@ -4,7 +4,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 本项目有 `js` 版本，请切换至分支 [ofo-ms-js](https://github.com/popring/ofo-ms/tree/ofo-ms-js)
 
-## explanation
+## Future
+
+- [ ] 登陆功能
+- [ ] 权限管理
+- [ ] 视图兼容移动端
+- [ ] d3.js 实时渲染 武汉疫情状况
+- [ ] NProgress 加载进度条
+
+## Bug - TODO
+
+- [ ] 多级菜单内点击面包屑导航返回空页面
+- [ ] 菜单 icon
+- [ ] 路由跳转过渡动画优化
+- [ ] `ofo-ms-js` 分支 更正 `README` ，`git` 地址
+
+## Explanation
 
 主分支默认为 `ts` 版本，去除 `js` 版本以下功能
 
@@ -36,8 +51,6 @@ API接口统一管理 [具体代码](./src/api/index.js)
 
 [Ant-Design](https://ant.design/)
 
-
-
 [axios](https://www.axios.com)
 
 
@@ -55,8 +68,6 @@ API接口统一管理 [具体代码](./src/api/index.js)
 [react-transition-group](https://reactcommunity.org/react-transition-group/)
 
 [animate.css](https://www.npmjs.com/package/animate.css)
-
-
 
 ## Installation
 
