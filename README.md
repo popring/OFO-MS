@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Bug - TODO
 
 - [ ] 多级菜单内点击面包屑导航返回空页面
-- [ ] 菜单 icon
+- [x] 菜单 icon
 - [ ] 路由跳转过渡动画优化
 - [ ] `ofo-ms-js` 分支 更正 `README` ，`git` 地址
 
