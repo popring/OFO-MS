@@ -19,7 +19,7 @@ export default class notifications extends React.Component {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>
+      <div>
         <Card title="通知提醒框">
           <Button type="primary" onClick={() => this.openNotification('success')}>
             Open success

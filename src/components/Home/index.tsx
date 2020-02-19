@@ -5,7 +5,7 @@ import './index.less';
 function Home() {
   return (
     <Row>
-      <Col xs={24}>
+      <Col span={24}>
         <Card className="home-wrap">欢迎进入 OLO小黄车 后台管理系统</Card>
       </Col>
     </Row>

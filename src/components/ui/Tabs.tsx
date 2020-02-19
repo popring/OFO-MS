@@ -82,7 +82,7 @@ export default class tabs extends React.Component<any, TState> {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>
+      <div>
         <Card title="tab页签">
           <Tabs>
             <TabPane tab="tab 1" key="1">

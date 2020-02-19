@@ -31,8 +31,8 @@ export class AppRouter extends Component<RouteComponentProps> {
   render() {
     const { location } = this.props;
     return (
-      <TransitionGroup className={'router-wrapper'}>
-        <CSSTransition timeout={300} key={location.pathname} classNames="page" appear unmountOnExit>
+      <TransitionGroup className={'container-wrapper'}>
+        <CSSTransition timeout={300} key={location.pathname} classNames="page"  unmountOnExit>
           <Switch location={location}>
             {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
             <Redirect exact from="/app" to="/app/home" />

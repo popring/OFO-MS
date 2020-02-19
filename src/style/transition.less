@@ -1,0 +1,39 @@
+.container-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  width: 100%;
+}
+
+.page-enter {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  width: 100%;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  position: absolute;
+  opacity: 1;
+  width: 100%;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  width: 100%;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}

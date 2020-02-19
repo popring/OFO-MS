@@ -14,7 +14,7 @@ export default class loading extends React.Component {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>
+      <div>
         <Card title="Loading">
           <div>
             <Spin size="small" />

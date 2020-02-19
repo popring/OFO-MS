@@ -19,7 +19,7 @@ class FormLogin extends React.Component<FormComponentProps> {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div style={{ width: '100%' }}>
+      <div>
         <Card title="登陆行内表单">
           <Form layout="inline">
             <FormItem>
