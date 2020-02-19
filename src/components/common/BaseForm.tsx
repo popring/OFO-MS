@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Select, Input, DatePicker, Row, Col } from 'antd';
+import { Form, Button, Select, Input, DatePicker, Row } from 'antd';
 import moment from 'moment';
 import { GetOptionList } from '../../utils/utils';
 import { FormComponentProps } from 'antd/lib/form';
@@ -66,7 +66,7 @@ const initFormList = (props: IFormComponentProps) => {
           {getFieldDecorator(field, {
             initialValue: '0'
           })(
-            <Select style={{ width: 150 }}>
+            <Select style={{ width: 200 }}>
               <Option value="0">全部</Option>
               <Option value="1">北京市</Option>
               <Option value="2">上海市</Option>
@@ -83,7 +83,7 @@ const initFormList = (props: IFormComponentProps) => {
           {getFieldDecorator(field, {
             initialValue: initialValue
           })(
-            <Select placeholder={placeholder} style={style}>
+            <Select placeholder={placeholder} style={{ width: 200, ...style }}>
               {GetOptionList(item.list)}
             </Select>
           )}
@@ -118,14 +118,10 @@ const BaseForm = (props: IFormComponentProps) => (
     <Form layout="inline" onSubmit={handleFilterSubmit(props)}>
       {initFormList(props)}
       <FormItem key="control">
-        <Col md={12}>
-          <Button type="primary" htmlType="submit">
-            查询
-          </Button>
-        </Col>
-        <Col md={12}>
-          <Button onClick={handleClearFilter(props.form)}>重置</Button>
-        </Col>
+        <Button type="primary" htmlType="submit">
+          查询
+        </Button>
+        <Button onClick={handleClearFilter(props.form)}>重置</Button>
       </FormItem>
     </Form>
   </Row>

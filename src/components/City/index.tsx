@@ -12,7 +12,6 @@ const formList: FormType[] = [
     field: 'city_id',
     placeholder: '全部',
     initialValue: '0',
-    style: { width: 120 },
     list: [
       { id: '0', name: '全部' },
       { id: '1', name: '北京' },
@@ -26,7 +25,6 @@ const formList: FormType[] = [
     field: 'mode',
     placeholder: '全部',
     initialValue: '0',
-    style: { width: 150 },
     list: [
       { id: '0', name: '全部' },
       { id: '1', name: '指定停车点模式' },
@@ -39,7 +37,6 @@ const formList: FormType[] = [
     field: 'op_mode',
     placeholder: '全部',
     initialValue: '0',
-    style: { width: 120 },
     list: [
       { id: '0', name: '全部' },
       { id: '1', name: '自营' },
@@ -52,7 +49,6 @@ const formList: FormType[] = [
     field: 'franchisee_name',
     placeholder: '全部',
     initialValue: '0',
-    style: { width: 120 },
     list: [
       { id: '0', name: '全部' },
       { id: '1', name: '已授权' },

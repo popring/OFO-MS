@@ -65,11 +65,7 @@ export default class App extends React.Component {
           <Button onClick={this.toggleLoading} loading={this.state.loading}>
             按钮
           </Button>
-          <Button
-            onClick={this.toggleLoading}
-            shape="circle"
-            loading={this.state.loading}
-            icon="delete"></Button>
+          <Button onClick={this.toggleLoading} shape="circle" loading={this.state.loading} icon="delete"></Button>
           <Button onClick={this.toggleLoading}>{this.state.loading ? '关闭' : '开启'}</Button>
         </Card>
         <br />
@@ -103,6 +99,9 @@ export default class App extends React.Component {
             按钮
           </Button>
         </Card>
+        <style>{`
+          .ant-btn[type="button"] {margin: 10px;}
+        `}</style>
       </div>
     );
   }
