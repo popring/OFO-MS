@@ -6,9 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Projects
 
-前端网页的链接： https://github.com/popring/ImoocManager 
-
-后端接口的链接： https://github.com/popring/imoocManagerAPI 
+前端网页的链接： https://github.com/popring/ofo-ms 
 
 ## Feature
 
