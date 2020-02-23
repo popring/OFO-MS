@@ -11,7 +11,8 @@ import { withRouter, Link, RouteComponentProps } from 'react-router-dom';
 import { menus, IMenu } from 'router/AppConfig';
 import { Breadcrumb } from 'antd';
 
-function createBreadcrumbNameMap(menu: IMenu[]): Object {
+// 遍历路径
+function createBreadcrumbNameMap(menu: IMenu[]) {
   const bdMap: any = {};
   for (const item of menu) {
     bdMap[item.path] = item.breadcrumbName;
@@ -25,7 +26,7 @@ function BreadcrumbCustom(props: RouteComponentProps) {
 
   const { location } = props;
   const pathSnippets = location.pathname.split('/').filter(i => i);
-  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+  const breadcrumbItems = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
     return (
       <Breadcrumb.Item key={url}>
@@ -33,7 +34,6 @@ function BreadcrumbCustom(props: RouteComponentProps) {
       </Breadcrumb.Item>
     );
   });
-  const breadcrumbItems = extraBreadcrumbItems;
 
   return <Breadcrumb>{breadcrumbItems}</Breadcrumb>;
 }
