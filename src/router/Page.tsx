@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Login from 'components/pages/Login';
 import Test from 'components/demo';
 import App from 'src/App';

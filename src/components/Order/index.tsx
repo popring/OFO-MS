@@ -184,10 +184,18 @@ class order extends React.Component<ComponentProps<any>, StateType> {
           />
         </Card>
         <Card>
-          <Button type="primary" style={{ marginBottom: 10 }} onClick={this.openDetail}>
+          <Button
+            type="primary"
+            style={{ marginBottom: 10 }}
+            onClick={this.openDetail}
+            disabled={selectedRowKeys.length === 0}>
             订单详情
           </Button>
-          <Button type="primary" style={{ marginBottom: 10 }} onClick={this.closeOrder}>
+          <Button
+            type="primary"
+            style={{ marginBottom: 10 }}
+            onClick={this.closeOrder}
+            disabled={selectedRowKeys.length === 0}>
             结束订单
           </Button>
           <Table
