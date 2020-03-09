@@ -8,10 +8,10 @@
 
 import Demo from './demo';
 import Login from './pages/Login';
-import Home from './Home';
-import Button from './ui/Button';
-import Modal from './ui/Modal';
-import Loading from './ui/Loading';
+// import Home from './Home';
+// import Button from './ui/Button';
+// import Modal from './ui/Modal';
+// import Loading from './ui/Loading';
 import Message from './ui/Message';
 import Notification from './ui/Notification';
 import Carsouse from './ui/Carsouse';
@@ -24,6 +24,12 @@ import City from './City/index';
 import Order from './Order/index';
 import User from './User';
 import NoMatch from './common/404';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('./Home'));
+const Button = lazy(() => import('./ui/Button'));
+const Modal = lazy(() => import('./ui/Modal'));
+const Loading = lazy(() => import('./ui/Loading'));
 
 export default {
   Demo,

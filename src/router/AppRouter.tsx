@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Switch, Route, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
 import { menus as RoutesConfig, IMenu } from './AppConfig';
 import AllComponents from 'components/index';
@@ -32,12 +32,14 @@ export class AppRouter extends Component<RouteComponentProps> {
     const { location } = this.props;
     return (
       <TransitionGroup className={'container-wrapper'}>
-        <CSSTransition timeout={300} key={location.pathname} classNames="page"  unmountOnExit>
-          <Switch location={location}>
-            {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
-            <Redirect exact from="/app" to="/app/home" />
-            <Route component={NoMatch} />
-          </Switch>
+        <CSSTransition timeout={300} key={location.pathname} classNames="page" unmountOnExit>
+          <Suspense fallback={<div>loading...</div>}>
+            <Switch location={location}>
+              {Object.keys(RoutesConfig).map(k => this.createRoute(k))}
+              <Redirect exact from="/app" to="/app/home" />
+              <Route component={NoMatch} />
+            </Switch>
+          </Suspense>
         </CSSTransition>
       </TransitionGroup>
     );

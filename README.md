@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ ] 视图兼容移动端
 - [ ] d3.js 实时渲染 武汉疫情状况
 - [ ] NProgress 加载进度条
+- [ ] 基于路由的代码分割
 
 ## Bug - TODO
 
